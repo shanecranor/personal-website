@@ -37,7 +37,7 @@ function init(){
 	let blurFilter = new PIXI.filters.BlurFilter();
 	let blurFilter2 = new PIXI.filters.BlurFilter();
 	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60,10,true);
-	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(100,5,true);
+	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80,10,true);
 	let glitchFilter = new PIXI.filters.GlitchFilter({
 		slices: 10,
 		offset: 10,
@@ -120,6 +120,7 @@ function generateStars(num, size){
 	starShieldGraphic.beginFill(0x000000);
 	starShieldGraphic.alpha = .9
 	starShieldGraphic.drawEllipse(width/2,6*height/8,width/1.5,height/2);
+	starShieldGraphic.drawEllipse(0,0,1,1);
 	groundCoverGraphic.clear();
 	groundCoverGraphic.beginFill(0x000000);
 	groundCoverGraphic.alpha = 1;
