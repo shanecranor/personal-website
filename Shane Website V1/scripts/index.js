@@ -34,10 +34,15 @@ function init(){
 	groundGraphic = new PIXI.Graphics();
 	groundLineGraphic = new PIXI.Graphics();
 	fogGraphic = new PIXI.Graphics();
+	let reflectionFilter = new PIXI.filters.ReflectionFilter();
+	reflectionFilter.alpha = [.3,.9];
+	reflectionFilter.boundary = .7;
+	reflectionFilter.amplitude = [1,0]
+	reflectionFilter.waveLength = [1,100]
 	let blurFilter = new PIXI.filters.BlurFilter();
 	let blurFilter2 = new PIXI.filters.BlurFilter();
-	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60,10,true);
-	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80,10,true);
+	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60,8,true);
+	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80,8,true);
 	let glitchFilter = new PIXI.filters.GlitchFilter({
 		slices: 10,
 		offset: 10,
@@ -53,6 +58,7 @@ function init(){
 	app.stage.padding = 300;
 	fogGraphic.padding = 300;
 	starShieldGraphic.filters = [blurFilter4];
+	//starsGraphic.filters = [reflectionFilter];
 	groundGraphic.filters = [blurFilter];
 	groundLineGraphic.filters = [blurFilter2];
 	fogGraphic.filters = [blurFilter3];
@@ -60,18 +66,16 @@ function init(){
 	//app.stage.filters = [CRTFilter];
 	//groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 	app.stage.addChild(starsGraphic);
+
 	app.stage.addChild(starShieldGraphic);
 	app.stage.addChild(groundCoverGraphic);
 	app.stage.addChild(groundGraphic);
 	app.stage.addChild(fogGraphic);
 	app.stage.addChild(groundLineGraphic);
-
-	app.ticker.add(animationloop);
-
-	time = 0; //GLOBAL TIME VAR
-
-	generateStars(200,3);
+	app.ticker.maxFPS = 24;
+	app.ticker.add(animationLoop);
 }
+
 
 function generateStars(num, size){
 	starsGraphic.clear();
@@ -85,13 +89,10 @@ function generateStars(num, size){
 	r = mulberry32(6969); //seed random number gen, generate numbers by calling r()
 	for(var x = 0; x < width; x+=(55+(r()*1))*3){
 		for(var y = 0; y < height; y+=3*(95+(r()*1))){
-			//var x = r()*width;
-			//var y = r()*height;
-			//var s = Math.pow(r(), 500)*size+.7; //math.pow makes larger stars less common
-			;
-
+			var s = Math.pow(r(), 500)*size*10; //math.pow makes larger stars less common
 			let starX = x+r()*40;
-			let starY = y+r()*10;
+			let starY = (((((y+r()*10)+(time)))-((height / 2) - (height / 5))) %
+				(height*1))-(.3*((height / 2) - (height / 5)));//Math.floor(offset*10);
 			let star = null;
 			//if(Math.abs(starY - height/2) > 400){
 			star = new PIXI.Sprite(starsTexture);
@@ -101,31 +102,31 @@ function generateStars(num, size){
 			star.angle = r() *  360;
 			star.position.x = starX;
 			star.position.y = starY;
-			if(r() < 0.5 && Math.abs(star.position.y - height/2) > 300) {
-				star.blendMode = PIXI.BLEND_MODES.ADD;
-			}
-
+			//if(Math.abs(star.position.y - height/2) > 300) {
+				//star.blendMode = PIXI.BLEND_MODES.ADD;
+			//}
 			starsGraphic.addChild(star);
-			/*   //OLD circle based rendering
-		graphic.lineStyle(0);
-		graphic.alpha = 1;
-		graphic.beginFill(0xFFFFFF);
-		graphic.drawCircle(x,y,s);
-		graphic.endFill();
-		*/
 		}
 	}
 
+	drawStarShield(width, height);
+	drawGroundCover(height, width);
+	//graphic.endFill();
+}
+
+function drawStarShield(width, height) {
 	starShieldGraphic.clear();
 	starShieldGraphic.beginFill(0x000000);
 	starShieldGraphic.alpha = .9
-	starShieldGraphic.drawEllipse(width/2,6*height/8,width/1.5,height/2);
-	starShieldGraphic.drawEllipse(0,0,1,1);
+	starShieldGraphic.drawEllipse(width / 2, 6 * height / 8, width / 1.5, height / 2);
+	starShieldGraphic.drawEllipse(0, 0, 1, 1);
+}
+
+function drawGroundCover(height, width) {
 	groundCoverGraphic.clear();
 	groundCoverGraphic.beginFill(0x000000);
 	groundCoverGraphic.alpha = 1;
-	groundCoverGraphic.drawRect(0,height-((height/2)-(height/5)), width, height+100)
-	//graphic.endFill();
+	groundCoverGraphic.drawRect(0, height - ((height / 2) - (height / 5)), width, height + 100)
 }
 
 function drawBottomGrid() {
@@ -183,19 +184,13 @@ function drawFog() {
 	//fogGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 }
 
-function animationloop() {
+function animationLoop() {
 	drawBottomGrid();
 	drawFog();
+	generateStars(200,3);
 }
 
-function mulberry32(a) {
-	return function() {
-		var t = a += 0x6D2B79F5;
-		t = Math.imul(t ^ t >>> 15, t | 1);
-		t ^= t + Math.imul(t ^ t >>> 7, t | 61);
-		return ((t ^ t >>> 14) >>> 0) / 4294967296;
-	}
-}
+
 function matrixGround(xdiv, ydiv, top, aspectX, aspectY, speedX, speedY, graphic){
 	var width = app.screen.width;
 	var height = app.screen.height;
@@ -222,6 +217,33 @@ function matrixGround(xdiv, ydiv, top, aspectX, aspectY, speedX, speedY, graphic
 		line(0, newY, width, newY, graphic)
 	}
 }
+
+function line(x0,y0,x1,y1, graphic){
+	graphic.moveTo(x0,y0);
+	graphic.lineTo(x1,y1);
+}
+function sin(x){
+	return Math.sin(x);
+}
+window.addEventListener("resize", function () {
+	app.renderer.resize(window.innerWidth, window.innerHeight);
+	generateStars(200,3);
+});
+function mouseOverCode() {
+	document.getElementById("h2Container").style.fontFamily = "Courier New,Courier,monospace";
+
+}
+function mouseOutCode() {
+	document.getElementById("h2Container").style.fontFamily = "Inter, sans-serif";
+}
+function mulberry32(a) {
+	return function() {
+		var t = a += 0x6D2B79F5;
+		t = Math.imul(t ^ t >>> 15, t | 1);
+		t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+		return ((t ^ t >>> 14) >>> 0) / 4294967296;
+	}
+}
 function hslToHex(h, s, l) {
 	var r, g, b;
 
@@ -246,23 +268,4 @@ function hslToHex(h, s, l) {
 	}
 
 	return PIXI.utils.rgb2hex([r, g, b]);
-}
-function line(x0,y0,x1,y1, graphic){
-	graphic.moveTo(x0,y0);
-	graphic.lineTo(x1,y1);
-}
-function sin(x){
-	return Math.sin(x);
-}
-window.addEventListener("resize", function () {
-	app.renderer.resize(window.innerWidth, window.innerHeight);
-	generateStars(200,3);
-});
-function mouseOverCode() {
-	document.getElementById("h2Container").style.fontFamily = "Courier New,Courier,monospace";
-
-}
-function mouseOutCode() {
-	document.getElementById("h2Container").style.fontFamily = "Inter, sans-serif";
-
 }
