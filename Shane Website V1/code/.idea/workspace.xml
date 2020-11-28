@@ -19,15 +19,15 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22de58d5-29f8-4e4c-a338-188d7a3e6529" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/code/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/scripts/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/code/styles/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/index.css" afterDir="false" />
+    <list default="true" id="b2a0b35c-2ba5-4fb4-9264-beaf89e633dd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/styles/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../styles/index.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,51 +37,40 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="ProjectId" id="1km3ln6LNzvoVAczlTBJxEG2nUY" />
+  <component name="ProjectId" id="1kuHHM9GJlIw4vKxfzu6f6rwQBa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/code/styles" />
-      <recent name="$PROJECT_DIR$/code" />
-      <recent name="$PROJECT_DIR$/styles" />
-      <recent name="$PROJECT_DIR$" />
-    </key>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="22de58d5-29f8-4e4c-a338-188d7a3e6529" name="Default Changelist" comment="" />
-      <created>1606292092950</created>
+      <changelist id="b2a0b35c-2ba5-4fb4-9264-beaf89e633dd" name="Default Changelist" comment="" />
+      <created>1606543467353</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1606292092950</updated>
-      <workItem from="1606292093980" duration="757000" />
-      <workItem from="1606383466279" duration="23122000" />
+      <updated>1606543467353</updated>
+      <workItem from="1606543468368" duration="11862000" />
     </task>
     <servers />
   </component>
@@ -98,19 +87,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="609" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606383556844">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="609" y="198" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.1027@0.23.1680.1027" timestamp="1606383556844" />
-    <state x="676" y="345" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1606519048947">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="676" y="345" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1680.1027@0.23.1680.1027" timestamp="1606519048947" />
-    <state x="884" y="291" width="598" height="490" key="find.popup" timestamp="1606383120144">
-      <screen x="0" y="23" width="1680" height="1027" />
-    </state>
-    <state x="884" y="291" width="598" height="490" key="find.popup/0.23.1680.1027@0.23.1680.1027" timestamp="1606383120144" />
   </component>
 </project>

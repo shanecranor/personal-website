@@ -4,10 +4,13 @@ let canvas = null;
 let groundGraphic = null;
 let groundLineGraphic = null;
 let groundCoverGraphic = null;
+let groundLineHorizonGraphic = null;
 let starsGraphic = null;
 let starShieldGraphic = null;
 let fogGraphic = null;
 let time = 0;
+let width = 0;
+let height = 0;
 window.onload = function(){
 	canvas = document.getElementById("backgroundCanvas");
 	document.getElementById("code").addEventListener("mouseover", mouseOverCode);
@@ -28,21 +31,31 @@ function init(){
 		autoDensity: true,
 		antialias: true
 	});
+	width = app.screen.width;
+	height = app.screen.height;
 	starsGraphic = new PIXI.Graphics();
 	starShieldGraphic = new PIXI.Graphics();
 	groundCoverGraphic = new PIXI.Graphics();
 	groundGraphic = new PIXI.Graphics();
 	groundLineGraphic = new PIXI.Graphics();
+	groundLineHorizonGraphic = new PIXI.Graphics();
 	fogGraphic = new PIXI.Graphics();
 	let reflectionFilter = new PIXI.filters.ReflectionFilter();
 	reflectionFilter.alpha = [.3,.9];
 	reflectionFilter.boundary = .7;
 	reflectionFilter.amplitude = [1,0]
-	reflectionFilter.waveLength = [1,100]
+	reflectionFilter.waveLength = [1,100];
+	let glowFilter = new PIXI.filters.GlowFilter();
+	glowFilter.distance = 20;
+	glowFilter.outerStrength = 10;
+	glowFilter.color = hslToHex(.8,1,1);
+	glowFilter.knockout = true;
+	glowFilter.quality = .2
 	let blurFilter = new PIXI.filters.BlurFilter();
 	let blurFilter2 = new PIXI.filters.BlurFilter();
 	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60,8,true);
 	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80,8,true);
+	let blurFilter5 = new PIXI.filters.KawaseBlurFilter(5,8,true);
 	let glitchFilter = new PIXI.filters.GlitchFilter({
 		slices: 10,
 		offset: 10,
@@ -62,16 +75,18 @@ function init(){
 	groundGraphic.filters = [blurFilter];
 	groundLineGraphic.filters = [blurFilter2];
 	fogGraphic.filters = [blurFilter3];
-
+	groundLineHorizonGraphic.filters = [blurFilter5];
 	//app.stage.filters = [CRTFilter];
-	//groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
-	app.stage.addChild(starsGraphic);
+	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 
+	app.stage.addChild(starsGraphic);
 	app.stage.addChild(starShieldGraphic);
 	app.stage.addChild(groundCoverGraphic);
 	app.stage.addChild(groundGraphic);
 	app.stage.addChild(fogGraphic);
 	app.stage.addChild(groundLineGraphic);
+	app.stage.addChild(groundLineHorizonGraphic);
+
 	app.ticker.maxFPS = 24;
 	app.ticker.add(animationLoop);
 }
@@ -82,8 +97,6 @@ function generateStars(num, size){
 	for (var i = starsGraphic.children.length - 1; i >= 0; i--) {
 		starsGraphic.removeChild(starsGraphic.children[i]);
 	};
-	var width = app.screen.width;
-	var height = app.screen.height;
 	var star1Texture = PIXI.Texture.from('img/stars-tiled.jpg');
 	var starsTexture = PIXI.Texture.from('img/stars-tiled-2-min (1).png');
 	r = mulberry32(6969); //seed random number gen, generate numbers by calling r()
@@ -130,8 +143,6 @@ function drawGroundCover(height, width) {
 }
 
 function drawBottomGrid() {
-	var width = app.screen.width;
-	var height = app.screen.height;
 	groundGraphic.clear();
 	groundGraphic.alpha = 1;
 	groundLineGraphic.clear();
@@ -142,17 +153,26 @@ function drawBottomGrid() {
 	for (let i = 20; i > 1; i /= 2) {
 		//graphic.alpha = 1/i;
 		//let color = hslToHex(.82, 1, (1/i) );
-		let color = hslToHex(.82, .1, (1 / i) / 2 + .5);
+		let color = hslToHex(.82, 1, (1 / i) / 4 + .75);
 		//groundGraphic.lineStyle(i+.5, color, );
 		groundLineGraphic.lineStyle({
 			width: i + .5,
 			color: color,
 			alignment: 0.5,
-			alpha: Math.sqrt(1 / i),
+			alpha: Math.sqrt(1 / (i*5)),
 			cap: 'round',
 		})
 		matrixGround(300, 20, (height / 2) - (height / 5), 6, 6, 0, -.1, groundLineGraphic);
 	}
+	groundLineGraphic.lineStyle({
+		width: 2,
+		color: hslToHex(.82, 1, 1),
+		alignment: 0.5,
+		alpha: .9,
+		cap: 'round',
+	})
+	matrixGround(300, 20, (height / 2) - (height / 5), 6, 6, 0, -.1, groundLineGraphic);
+
 	let i = 20;
 	let color = hslToHex(.82, .6, (1 / i) / 2 + .32);
 	groundGraphic.lineStyle({
@@ -166,8 +186,6 @@ function drawBottomGrid() {
 }
 
 function drawFog() {
-	var width = app.screen.width;
-	var height = app.screen.height;
 	fogGraphic.clear();
 	fogGraphic.alpha = 1;
 	let o = 40; //overlap constant
@@ -184,18 +202,28 @@ function drawFog() {
 	//fogGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 }
 
+function drawHorizon() {
+	groundLineHorizonGraphic.clear();
+	groundLineHorizonGraphic.beginFill(0xFFFFFF);
+	groundLineHorizonGraphic.alpha = 1;
+	groundLineHorizonGraphic.drawEllipse(width/2,height-((height / 2) - (height / 5)),width/1.8,height/140);
+	groundLineHorizonGraphic.drawRect(0,0,.1,.1);
+	groundLineHorizonGraphic.drawRect(width,height,.1,.1);
+}
+
 function animationLoop() {
+	width = app.screen.width;
+	height = app.screen.height;
 	drawBottomGrid();
+	drawHorizon();
 	drawFog();
 	generateStars(200,3);
 }
 
 
 function matrixGround(xdiv, ydiv, top, aspectX, aspectY, speedX, speedY, graphic){
-	var width = app.screen.width;
-	var height = app.screen.height;
 	/***vertical line loop:***/
-		//Calculate the extra lines needed to compensate for the X aspect not making it all the way to the edge of the canvas
+	//Calculate the extra lines needed to compensate for the X aspect not making it all the way to the edge of the canvas
 	var extra = Math.abs(width - (width * aspectX)) / 2;
 	var timeModifierX = (time * speedX) % xdiv
 
@@ -230,11 +258,10 @@ window.addEventListener("resize", function () {
 	generateStars(200,3);
 });
 function mouseOverCode() {
-	document.getElementById("h2Container").style.fontFamily = "Courier New,Courier,monospace";
-
+	//document.getElementById("h2Container").style.fontFamily = "Courier New,Courier,monospace";
 }
 function mouseOutCode() {
-	document.getElementById("h2Container").style.fontFamily = "Inter, sans-serif";
+	//document.getElementById("h2Container").style.fontFamily = "Inter, sans-serif";
 }
 function mulberry32(a) {
 	return function() {
