@@ -14,11 +14,13 @@ window.onload = function(){
     });
     spacing = INITIALSPACING;
     app.ticker.add(animationLoop);
+
+
 }
 
 function animationLoop() {
     title.firstElementChild.style.letterSpacing = spacing+"px";
     if(spacing > 1)
         spacing/=1.05;
-
+    console.log();
 }
