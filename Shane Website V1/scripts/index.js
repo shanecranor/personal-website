@@ -11,8 +11,10 @@ let fogGraphic = null;
 let time = 0;
 let width = 0;
 let height = 0;
-let scrollY = 0;
+let scrollY = -100;
+let oldDeltaScrollY = 0;
 let deltaScrollY = 0;
+let TOP = 0;
 let nameDOM = null;
 window.onload = function(){
 	canvas = document.getElementById("backgroundCanvas");
@@ -25,14 +27,17 @@ window.onload = function(){
 }
 
 function doScrollAction(event) {
+	let isFirefox = typeof InstallTrigger !== 'undefined';
 	event.preventDefault();
 	var delta = 0;
 	if (!event) event = window.event;
 	// normalize the delta
-	delta = -event.deltaY / 2;
+	delta = -event.deltaY / 2 - (event.deltaX/2);
+	if (isFirefox){
+		delta*=15;
+	}
 	//calculating the next position of the object
-	scrollY+=delta - (event.deltaX/2);
-	deltaScrollY=delta;
+	deltaScrollY+=delta;
 }
 
 function init(){
@@ -119,8 +124,8 @@ function generateStars(num, size){
 		for(var y = 0; y < height; y+=3*(95+(r()*1))){
 			var s = Math.pow(r(), 500)*size*10; //math.pow makes larger stars less common
 			let starX = x+r()*40;
-			let starY = (((((y+r()*10)+(time)))-((height / 2) - (height / 5))) %
-				(height*1))-(.3*((height / 2) - (height / 5)));//Math.floor(offset*10);
+			let starY = (((((y+r()*10)+(time)))-(TOP)) %
+				(height*1))-(.3*(TOP));//Math.floor(offset*10);
 			let star = null;
 			//if(Math.abs(starY - height/2) > 400){
 			star = new PIXI.Sprite(starsTexture);
@@ -154,12 +159,15 @@ function drawGroundCover(height, width) {
 	groundCoverGraphic.clear();
 	groundCoverGraphic.beginFill(0x000000);
 	groundCoverGraphic.alpha = 1;
-	groundCoverGraphic.drawRect(0, height - ((height / 2) - (height / 5)), width, height + 100)
+	groundCoverGraphic.drawRect(0, height - (TOP), width, height + 100)
 }
 
 function drawBottomGrid() {
+	let XDIV = 330;
+	let YDIV = 23;
+	let ASPECT = 6.5;
 	let SPEEDX = scrollY;
-	let SPEEDY = -1;
+	let SPEEDY = -0.1;
 	groundGraphic.clear();
 	groundGraphic.alpha = 1;
 	groundLineGraphic.clear();
@@ -179,7 +187,7 @@ function drawBottomGrid() {
 			alpha: Math.sqrt(1 / (i*5)),
 			cap: 'round',
 		})
-		matrixGround(300, 20, (height / 2) - (height / 5), 6, 6, SPEEDX, SPEEDY, groundLineGraphic);
+		matrixGround(XDIV, YDIV, TOP, ASPECT, SPEEDX, SPEEDY, groundLineGraphic);
 	}
 	groundLineGraphic.lineStyle({
 		width: 2,
@@ -188,7 +196,7 @@ function drawBottomGrid() {
 		alpha: .9,
 		cap: 'round',
 	})
-	matrixGround(300, 20, (height / 2) - (height / 5), 6, 6, SPEEDX, SPEEDY, groundLineGraphic);
+	matrixGround(XDIV, YDIV, TOP, ASPECT, SPEEDX, SPEEDY, groundLineGraphic);
 
 	let i = 20;
 	let color = hslToHex(.82, .6, (1 / i) / 2 + .32);
@@ -199,7 +207,7 @@ function drawBottomGrid() {
 		alpha: 1,
 		cap: 'round',
 	})
-	matrixGround(300, 20, (height / 2) - (height / 5), 6, 6, SPEEDX, SPEEDY, groundGraphic);
+	matrixGround(XDIV, YDIV, TOP, ASPECT, SPEEDX, SPEEDY, groundGraphic);
 }
 
 function drawFog() {
@@ -231,7 +239,7 @@ function drawHorizon() {
 	groundLineHorizonGraphic.clear();
 	groundLineHorizonGraphic.beginFill(0xFFFFFF);
 	groundLineHorizonGraphic.alpha = 1;
-	groundLineHorizonGraphic.drawEllipse(width/2,height-((height / 2) - (height / 5)),width/1.8,height/140);
+	groundLineHorizonGraphic.drawEllipse(width/2,height-(TOP),width/1.8,height/140);
 	groundLineHorizonGraphic.drawRect(0,0,.1,.1);
 	groundLineHorizonGraphic.drawRect(width,height,.1,.1);
 }
@@ -239,33 +247,65 @@ function drawHorizon() {
 function animationLoop() {
 	width = app.screen.width;
 	height = app.screen.height;
+	TOP = (height / 2) - (height / 5)-scrollY/2;
+	let isScrolling = !(oldDeltaScrollY == deltaScrollY);
+	if(scrollY > 200 && deltaScrollY > 0){
+		deltaScrollY *=.5;
+	}
+	scrollY += deltaScrollY;
+	deltaScrollY*=.8;
+	if(scrollY > 0) {
+		deltaScrollY -= .08*Math.abs(scrollY);
+		if(scrollY < 100){
+			deltaScrollY*=.4;
+		}
+		if(deltaScrollY < -10){
+			deltaScrollY += 2.5;
+		}
+	}
+	if(scrollY < 0 && deltaScrollY > -20 && !isScrolling && scrollY > -width/2){
+		deltaScrollY += .1*Math.abs(scrollY);
+		if(scrollY < 60){
+			deltaScrollY*=.4;
+		}
+	}
+	if(scrollY <= -width/2){
+		if(scrollY < -width) {
+			deltaScrollY += .1*Math.abs(scrollY+width);
+		}else{
+			deltaScrollY -= .1*Math.abs(scrollY+width);
+		}
+	}
+	oldDeltaScrollY = deltaScrollY;
+
 	nameDOM.style.marginLeft = scrollY + "px";
 	drawBottomGrid();
 	drawHorizon();
 	drawFog();
 	generateStars(200,3);
+
 }
 
 
-function matrixGround(xdiv, ydiv, top, aspectX, aspectY, speedX, speedY, graphic){
+function matrixGround(xdiv, ydiv, top, aspect, speedX, speedY, graphic){
 	/***vertical line loop:***/
 	//Calculate the extra lines needed to compensate for the X aspect not making it all the way to the edge of the canvas
-	var extra = Math.abs(width - (width * aspectX)) / 2;
+	var extra = Math.abs(width - (width * aspect)) / 2;
 	var timeModifierX = (speedX) % xdiv
 	//loops from before 0 to cover the whole canvas, keep looping until after width for the same reason
 	for(var x = (-1 * extra) + timeModifierX; x < width + extra; x += xdiv){
 		//devide the x position by the aspect to simulate perspective
 		//use arious maths to keep the perspective centered
-		var x0 = (( x - (width/2)) / aspectX ) + (width/2);
+		var x0 = (( x - (width/2)) / aspect) + (width/2);
 		//draw vertical lines
 		line(x0,	height-top, x,	height, graphic);
 	}
 	/***horizontal line loop:***/
 	var timeModifierY = -1 * ((time * speedY) % 1);
 	//doesn't loop using acual Y coordinates because we need to scale everything quadratically to emulate perspective
-	for(var y = timeModifierY; y * y * ydiv / aspectY < top+1; y++){
+	for(var y = timeModifierY; y * y * ydiv / aspect < top+1; y++){
 		//makes everything further away as it gets closer to the bottom of the screen
-		var newY = (height-top) + (y * ydiv * (y) / aspectY);
+		var newY = (height-top) + (y * ydiv * (y) / aspect);
 		//draw horizontal lines
 		line(0, newY, width, newY, graphic)
 	}
