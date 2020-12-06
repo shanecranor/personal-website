@@ -87,20 +87,20 @@ body{
 	transform: scale(1);
 
 }
+
+/*SUPER SICK VHS EFFECT*/
 #bioHeader::before{
-	font-size: 30vw;
+	font-size: 12vw;
 	color: white;
 	display: flex;
 	font-family: "VCR", sans-serif;
 	mix-blend-mode:color-dodge;
-
 }
-/*SUPER SICK VHS EFFECT*/
 #bioHeader {
 	color: rgba(230,230,230,.9);
 	mix-blend-mode: color-dodge;
 	position: relative;
-	font-size: 30vw;
+	font-size: 12vw;
 	display: flex;
 	font-family: "VCR", sans-serif;
 }
@@ -161,7 +161,6 @@ h1 {
 	text-align: center;
 	/*text-shadow: 0px 0px 100px white;*/
 	background-image: linear-gradient( blue 10%, white 50%, rgba(30,0,30,1) 51%, magenta 70%, white 90% );
-	filter: drop-shadow(0px 0px 20px rgba(255,255,255,.2));
 
   /* Use the text as a mask for the background. */
   /* This will show the gradient as a text color rather than element bg. */
@@ -176,6 +175,9 @@ h1 {
 h1{
 	filter: url(#filterNoGlitch) drop-shadow(0px 0px 20px rgba(255,255,255,.2));
 }
+h1:hover{
+	filter: url(#filter) drop-shadow(0px 0px 20px rgba(255,255,255,.2));
+}
 a {
 	justify-content: center;
 	text-align: center;
@@ -185,7 +187,7 @@ a {
 	margin: 0px;
 
 	color: rgba(230,230,230,.9);
-	mix-blend-mode: color-dodge;
+	mix-blend-mode: lighten;
 	position: relative;
 	display: flex;
 	margin: 1px;
@@ -199,4 +201,5 @@ u {
 	z-index: 1;
 	text-decoration: none;
 	border-bottom: 0px solid white;
+	mix-blend-mode: lighten;
 }

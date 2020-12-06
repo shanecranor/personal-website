@@ -170,6 +170,7 @@ function animationLoop() {
 	drawFog();
 	generateStars(200,3);
 }
+
 function doScrollingStuff() {
 	width = app.screen.width;
 	height = app.screen.height;
@@ -412,6 +413,7 @@ function sin(x){
 	return Math.sin(x);
 }
 window.addEventListener("resize", function () {
+	app2.renderer.resize(window.innerWidth, window.innerHeight);
 	app.renderer.resize(window.innerWidth, window.innerHeight);
 	generateStars(200,3);
 });
