@@ -2,6 +2,10 @@
 	font-family: "Astro Armada";
 	src: url("_astroarmada.ttf");
 }
+@font-face {
+	font-family: "VCR";
+	src: url("VCR_OSD_MONO.ttf");
+}
 
 html{
 	background: black;
@@ -23,6 +27,21 @@ body{
 	width: 100%;
 	height: 100%;
 	background: Black;
+}
+#onTopCanvas {
+	z-index: 99;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	/*background-blend-mode: screen;*/
+	mix-blend-mode: multiply;
+	/*background: rgba(255,0,0,.1);*/
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	pointer-events: none;
 }
 #mainContainer {
 	padding:0;
@@ -55,6 +74,7 @@ body{
 	align-items: center;
 	flex-direction: column;
 	text-align: center;
+	display: flex;
 	/*prevent zooming, the text is huge as it is so zoom is not needed for accessability*/
 	/*doesn't work in safari *sadface*/
 	-webkit-text-size-adjust: none;
@@ -65,27 +85,72 @@ body{
 	-moz-transform: scale(1);
 	-o-transform: scale(1);
 	transform: scale(1);
-}
-#bioFrame > #bioHeader{
 
 }
+#bioHeader::before{
+	font-size: 30vw;
+	color: white;
+	display: flex;
+	font-family: "VCR", sans-serif;
+	mix-blend-mode:color-dodge;
+
+}
+/*SUPER SICK VHS EFFECT*/
+#bioHeader {
+	color: rgba(230,230,230,.9);
+	mix-blend-mode: color-dodge;
+	position: relative;
+	font-size: 30vw;
+	display: flex;
+	font-family: "VCR", sans-serif;
+}
+#bioHeader:hover {
+	filter: url(#filter);
+}
+#bioHeader:before, #bioHeader:after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	filter: blur(3px);
+	mix-blend-mode: soft-light;
+}
+#bioHeader:before {
+	content: attr(data-text);
+	color: rgba(255,100,100,.9);
+	transform: translate(-1px, -1px);
+}
+#bioHeader:after {
+	content: attr(data-text);
+	color: rgba(100,100,255,.9);
+	transform: translate(1px, 1px);
+}
+/*END SUPER SICK VHS EFFECT*/
+#bioContents{
+	color: white;
+	width: 80vw;
+	height: auto;
+	display: flex;
+	font-family: "Poppins", sans-serif;
+	font-weight: 200;
+	font-size: 2vw;
+	text-align: left;
+}
 #h2Container {
+
 	display: flex;
 	width: 80vw;
 	justify-content: center;
 	flex-direction: row;
-	/*background: Red;*/
-
 	font-family: "Poppins", sans-serif;
 	font-weight: 200;
 	font-size: 4vw;
 	text-align: center;
 }
 
+
 h1 {
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	z-index: 99;
 	/*font-family:"Work Sans", sans-serif;*/
 	font-family: "Astro Armada";
 	/*font-family: 'Poppins', sans-serif;*/
@@ -96,7 +161,7 @@ h1 {
 	text-align: center;
 	/*text-shadow: 0px 0px 100px white;*/
 	background-image: linear-gradient( blue 10%, white 50%, rgba(30,0,30,1) 51%, magenta 70%, white 90% );
-
+	filter: drop-shadow(0px 0px 20px rgba(255,255,255,.2));
 
   /* Use the text as a mask for the background. */
   /* This will show the gradient as a text color rather than element bg. */
@@ -108,17 +173,30 @@ h1 {
   -webkit-text-stroke-color: white;
 	paint-order: stroke fill;
 }
+h1{
+	filter: url(#filterNoGlitch) drop-shadow(0px 0px 20px rgba(255,255,255,.2));
+}
 a {
-	color: White;
+	justify-content: center;
+	text-align: center;
 	text-decoration: none;
 	flex: 0 24vw;
 	z-index: 1;
 	margin: 0px;
+
+	color: rgba(230,230,230,.9);
+	mix-blend-mode: color-dodge;
+	position: relative;
+	display: flex;
+	margin: 1px;
+}
+u:hover{
+	filter: url(#filter) drop-shadow(0px 0px 9px rgba(255,255,255,.1));;
+	mix-blend-mode: hard-light;
 }
 u {
-	z-index: 99;
+	filter: url(#filterNoGlitch2) drop-shadow(0px 0px 9px rgba(255,255,255,.2));
+	z-index: 1;
 	text-decoration: none;
 	border-bottom: 0px solid white;
 }
-
-

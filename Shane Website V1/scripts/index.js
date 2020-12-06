@@ -1,6 +1,10 @@
 //GLOBAL VARS
 let app = null;
+let app2 = null;
+let CRTFilter = null;
 let canvas = null;
+let canvas2 = null;
+let app2Graphic = null;
 let groundGraphic = null;
 let groundLineGraphic = null;
 let groundCoverGraphic = null;
@@ -14,10 +18,12 @@ let height = 0;
 let scrollY = -100;
 let oldDeltaScrollY = 0;
 let deltaScrollY = 0;
+let notScrollingFrames = 40;
 let TOP = 0;
 let nameDOM = null;
 window.onload = function(){
 	canvas = document.getElementById("backgroundCanvas");
+	canvas2 = document.getElementById("onTopCanvas");
 	document.getElementById("code").addEventListener("mouseover", mouseOverCode);
 	document.getElementById("code").addEventListener("mouseout", mouseOutCode);
 	init();
@@ -34,8 +40,11 @@ function doScrollAction(event) {
 	// normalize the delta
 	delta = -event.deltaY / 2 - (event.deltaX/2);
 	if (isFirefox){
-		delta*=15;
+		delta*=2;
+	}else{
+		delta*=.5;
 	}
+
 	//calculating the next position of the object
 	deltaScrollY+=delta;
 }
@@ -50,8 +59,18 @@ function init(){
 		autoDensity: true,
 		antialias: true
 	});
+	app2 = new PIXI.Application({
+		view: canvas2,
+		width: window.innerWidth,
+		height: window.innerHeight,
+		resolution: window.devicePixelRatio,
+		autoDensity: true,
+		antialias: true,
+		transparent: true
+	});
 	width = app.screen.width;
 	height = app.screen.height;
+	app2Graphic = new PIXI.Graphics();
 	starsGraphic = new PIXI.Graphics();
 	starShieldGraphic = new PIXI.Graphics();
 	groundCoverGraphic = new PIXI.Graphics();
@@ -59,6 +78,7 @@ function init(){
 	groundLineGraphic = new PIXI.Graphics();
 	groundLineHorizonGraphic = new PIXI.Graphics();
 	fogGraphic = new PIXI.Graphics();
+
 	let reflectionFilter = new PIXI.filters.ReflectionFilter();
 	reflectionFilter.alpha = [.3,.9];
 	reflectionFilter.boundary = .7;
@@ -80,9 +100,14 @@ function init(){
 		offset: 10,
 		fillMode: 2 //LOOP
 	});
-	let CRTFilter = new PIXI.filters.CRTFilter({
-		vignetting: .1
-	});
+	CRTFilter = new PIXI.filters.CRTFilter();
+	CRTFilter.curvature = 2;
+	CRTFilter.vignetting = .2;
+	CRTFilter.vignettingBlur = .2;
+	CRTFilter.noise = .05;
+	CRTFilter.noiseSize	= 1;
+	CRTFilter.lineWidth = 3;
+	CRTFilter.lineContrast = .05;
 	blurFilter.blur = 25;
 	blurFilter.quality = 5;
 	blurFilter2.blur = 1;
@@ -95,9 +120,11 @@ function init(){
 	groundLineGraphic.filters = [blurFilter2];
 	fogGraphic.filters = [blurFilter3];
 	groundLineHorizonGraphic.filters = [blurFilter5];
-	//app.stage.filters = [CRTFilter];
-	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 
+	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
+	app2Graphic.filters = [CRTFilter];
+	//app2.stage.filters = [CRTFilter];
+	app2.ticker.maxFPS = 90;
 	app.stage.addChild(starsGraphic);
 	app.stage.addChild(starShieldGraphic);
 	app.stage.addChild(groundCoverGraphic);
@@ -105,9 +132,108 @@ function init(){
 	app.stage.addChild(fogGraphic);
 	app.stage.addChild(groundLineGraphic);
 	app.stage.addChild(groundLineHorizonGraphic);
-
-	app.ticker.maxFPS = 24;
+	app2.stage.addChild(app2Graphic);
+	app.ticker.maxFPS = 0;
 	app.ticker.add(animationLoop);
+}
+
+function doGlitchAnimation() {
+	let shudderSize = 5;
+	let obj = document.getElementById("glitch-mask-left");
+	let randY = shudderSize*(Math.random()-0.5);
+	let randX = shudderSize*(Math.random()-0.5);
+	obj.setAttribute("transform","translate("+randX+","+randY+ ")")
+	obj = document.getElementById("glitch-mask-right");
+	randY = shudderSize*(Math.random()-0.5);
+	randX = shudderSize*(Math.random()-0.5);
+	obj.setAttribute("transform","translate("+randX+","+randY+ ")")
+	if(Math.random()<.9){return}
+
+	for(let i = 0; i < 7; i++){
+		let rect = document.getElementById("rect" + i);
+		randX = Math.random()*60;
+		randY = Math.random()*100;
+		let randHeight = Math.random()*20;
+		let randWidth = Math.random()*30+70
+		rect.setAttribute("x",randX + "%");
+		rect.setAttribute("y",randY+ "%");
+		rect.setAttribute("width",randWidth + "%");
+		rect.setAttribute("height",randHeight+ "%");
+	}
+}
+
+function animationLoop() {
+	doGlitchAnimation();
+	doScrollingStuff();
+	drawBottomGrid();
+	drawHorizon();
+	drawFog();
+	generateStars(200,3);
+}
+function doScrollingStuff() {
+	width = app.screen.width;
+	height = app.screen.height;
+	TOP = (height / 2) - (height / 5) - scrollY / 2;
+	let isScrolling = !(oldDeltaScrollY == deltaScrollY);
+	if (isScrolling){
+		notScrollingFrames = 0;
+	}else{
+		notScrollingFrames +=1;
+	}
+
+	//if we go too far to the right, slow our delta
+	if (scrollY > 200 && deltaScrollY > 0) {
+		deltaScrollY *= .5;
+	}
+	//if we go too far to the left, slow our delta
+	if (scrollY <= -width && deltaScrollY < 0) {
+		deltaScrollY *=.1 ;
+	}
+	let TOPSPEED = 200;
+	if(deltaScrollY > TOPSPEED){
+		deltaScrollY*=.8
+	}
+	if(deltaScrollY < -TOPSPEED){
+		deltaScrollY*=.8
+	}
+	scrollY += deltaScrollY;
+	deltaScrollY *= .8;
+	//if we are any bit to the right
+	if (scrollY > 0) {
+		deltaScrollY -= .08 * Math.abs(scrollY);
+		if (scrollY < 100) {
+			deltaScrollY *= .4;
+		}
+		if (deltaScrollY < -10) {
+			deltaScrollY += 2.5;
+		}
+	}else {
+		//if we are to to the left
+		if (notScrollingFrames > 13) {
+			//if we are less than half way to the next point, go back to first stop
+			if (scrollY > -width / 2) {
+				deltaScrollY += .05 * Math.abs(scrollY);
+			} else{
+				if(scrollY > -1 * width) {//if we aren't past, go towards
+					deltaScrollY -= .1 * Math.abs(scrollY + width);
+				}
+			}
+		}
+		if (scrollY < -1 * (width / 2)) {
+			if (scrollY < -1 * width) {
+				deltaScrollY += .1 * Math.abs(scrollY + width);
+			}
+			if(Math.abs(scrollY + width) < 40) {
+				deltaScrollY *= .4;
+			}
+			if(Math.abs(scrollY + width) < 200) {
+				deltaScrollY *= .8;
+			}
+		}
+	}
+	oldDeltaScrollY = deltaScrollY;
+	nameDOM.style.marginLeft = scrollY + "px";
+
 }
 
 
@@ -148,6 +274,13 @@ function generateStars(num, size){
 }
 
 function drawStarShield(width, height) {
+	app2Graphic.clear();
+	app2Graphic.alpha=1;
+	app2Graphic.beginFill(hslToHex(0,0,.95));
+	app2Graphic.drawRect(0,0,width,height);
+	app2Graphic.drawRect(width-10,height-10,10,10);
+	CRTFilter.seed = Math.random();
+	CRTFilter.time += 0.2;
 	starShieldGraphic.clear();
 	starShieldGraphic.beginFill(0x000000);
 	starShieldGraphic.alpha = .9
@@ -244,47 +377,7 @@ function drawHorizon() {
 	groundLineHorizonGraphic.drawRect(width,height,.1,.1);
 }
 
-function animationLoop() {
-	width = app.screen.width;
-	height = app.screen.height;
-	TOP = (height / 2) - (height / 5)-scrollY/2;
-	let isScrolling = !(oldDeltaScrollY == deltaScrollY);
-	if(scrollY > 200 && deltaScrollY > 0){
-		deltaScrollY *=.5;
-	}
-	scrollY += deltaScrollY;
-	deltaScrollY*=.8;
-	if(scrollY > 0) {
-		deltaScrollY -= .08*Math.abs(scrollY);
-		if(scrollY < 100){
-			deltaScrollY*=.4;
-		}
-		if(deltaScrollY < -10){
-			deltaScrollY += 2.5;
-		}
-	}
-	if(scrollY < 0 && deltaScrollY > -20 && !isScrolling && scrollY > -width/2){
-		deltaScrollY += .1*Math.abs(scrollY);
-		if(scrollY < 60){
-			deltaScrollY*=.4;
-		}
-	}
-	if(scrollY <= -width/2){
-		if(scrollY < -width) {
-			deltaScrollY += .1*Math.abs(scrollY+width);
-		}else{
-			deltaScrollY -= .1*Math.abs(scrollY+width);
-		}
-	}
-	oldDeltaScrollY = deltaScrollY;
 
-	nameDOM.style.marginLeft = scrollY + "px";
-	drawBottomGrid();
-	drawHorizon();
-	drawFog();
-	generateStars(200,3);
-
-}
 
 
 function matrixGround(xdiv, ydiv, top, aspect, speedX, speedY, graphic){

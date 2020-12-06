@@ -20,116 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="22de58d5-29f8-4e4c-a338-188d7a3e6529" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/styles/font/astro_armada/_astroarmada.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/Avenir-Medium.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/Avenir-Medium.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/AvenirNextLTPro-Demi.otf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/AvenirNextLTPro-Demi.otf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/Valorant.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/Valorant.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/_astroarmada.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/_astroarmada.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/_astroarmadacond.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/_astroarmadacond.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/_astroarmadaital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/_astroarmadaital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmada.txt" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmada.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadacondital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadacondital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadacondsemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadacondsemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadaexpand.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadaexpand.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadaexpandital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadaexpandital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadaexpandsemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadaexpandsemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadagrad.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadagrad.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadagrad2.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadagrad2.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadagrad2ital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadagrad2ital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadagradital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadagradital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadahalf.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadahalf.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadahalfital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadahalfital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadasemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadasemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadasuperital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadasuperital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadatitle.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadatitle.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadatitleital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadatitleital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadatitlesemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadatitlesemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadatwo.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadatwo.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/astroarmadatwoital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/astroarmadatwoital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/useless/astroarmada3d.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/useless/astroarmada3d.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/useless/astroarmada3dital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/useless/astroarmada3dital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/useless/astroarmadaleft.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/useless/astroarmadaleft.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/useless/astroarmadaout.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/useless/astroarmadaout.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/useless/astroarmadaoutital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/useless/astroarmadaoutital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/useless/astroarmadaoutsemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/useless/astroarmadaoutsemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/astro_armada/useless/astroarmadasemileft.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/astro_armada/useless/astroarmadasemileft.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdyne.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdyne.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdyne.txt" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdyne.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynecond.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynecond.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynecondital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynecondital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynegrad.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynegrad.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynegradital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynegradital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynehalf.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynehalf.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynehalfital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynehalfital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdyneital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdyneital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynelaser.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynelaser.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynelaserital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynelaserital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdyneleft.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdyneleft.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynesemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynesemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynesuperital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynesuperital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynexpand.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynexpand.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/cyberdynexpandital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/cyberdynexpandital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/useless/cyberdyne3d.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/useless/cyberdyne3d.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/useless/cyberdyne3dital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/useless/cyberdyne3dital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/useless/cyberdyneout.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/useless/cyberdyneout.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/cyberdyne/useless/cyberdyneoutital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/cyberdyne/useless/cyberdyneoutital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/_mandalorehalf.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/_mandalorehalf.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/_mandalorehalfital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/_mandalorehalfital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalore.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalore.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalore.txt" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalore.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorecond.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorecond.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorecondital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorecondital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloregrad.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloregrad.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloregradital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloregradital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloreital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloreital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelaser.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelaser.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelaserital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelaserital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelaserleft.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelaserleft.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelaserrough.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelaserrough.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelaserroughital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelaserroughital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelasersemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelasersemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelasersuperital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelasersuperital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelasertitle.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelasertitle.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorelasertitleital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorelasertitleital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloreleft.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloreleft.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorerough.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorerough.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloreroughital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloreroughital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloresemital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloresemital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloresuperital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloresuperital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloretitle.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloretitle.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandaloretitleital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandaloretitleital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorexpand.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorexpand.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/mandalorexpandital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/mandalorexpandital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/useless/mandalore3d.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/useless/mandalore3d.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/mandalore/useless/mandalore3dital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/mandalore/useless/mandalore3dital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/nulshock/nulshock.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/nulshock/nulshock.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/nulshock/read-this.rtf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/nulshock/read-this.rtf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/nulshock/typodermic-eula-02-2014.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/nulshock/typodermic-eula-02-2014.pdf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamerica.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamerica.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamerica.txt" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamerica.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamerica3d.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamerica3d.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamerica3dital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamerica3dital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericabold.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericabold.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaboldital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaboldital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericachrome.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericachrome.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericachromeital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericachromeital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericacond.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericacond.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericacondital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericacondital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaexpand.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaexpand.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaexpandital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaexpandital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericagrad.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericagrad.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericagradital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericagradital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericahalf.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericahalf.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericahalfital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericahalfital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericalaser.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericalaser.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericalaserital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericalaserital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaleft.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaleft.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaout.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaout.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaoutital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaoutital.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaplat.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaplat.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/font/trans_america/transamericaplatital.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/font/trans_america/transamericaplatital.ttf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/index.css" afterDir="false" />
@@ -192,7 +83,7 @@
       <workItem from="1606292093980" duration="757000" />
       <workItem from="1606383466279" duration="23311000" />
       <workItem from="1606604913498" duration="1226000" />
-      <workItem from="1606955537538" duration="10932000" />
+      <workItem from="1606955537538" duration="40543000" />
     </task>
     <servers />
   </component>
@@ -224,6 +115,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040/-1280.0.1280.984@0.0.1920.1040" timestamp="1606607400747" />
+    <state width="498" height="446" key="SwitcherDM" timestamp="1607241433582">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="498" height="446" key="SwitcherDM/0.0.1920.1040/-1280.0.1280.984@0.0.1920.1040" timestamp="1607241433582" />
     <state x="884" y="291" width="598" height="490" key="find.popup" timestamp="1606383120144">
       <screen x="0" y="23" width="1680" height="1027" />
     </state>
@@ -232,16 +127,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/-1280.0.1280.984@0.0.1920.1040" timestamp="1606979786058" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/scripts/index.js</url>
-          <line>46</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
