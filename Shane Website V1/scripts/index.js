@@ -22,6 +22,14 @@ let notScrollingFrames = 40;
 let TOP = 0;
 let nameDOM = null;
 window.onload = function(){
+	let name = document.getElementById("name");
+	let bio = document.getElementById("bioFrame");
+	name.addEventListener("click", function(event){
+		deltaScrollY =-120;
+	});
+	bio.addEventListener("click", function(event){
+		deltaScrollY = 120;
+	});
 	canvas = document.getElementById("backgroundCanvas");
 	canvas2 = document.getElementById("onTopCanvas");
 	document.getElementById("code").addEventListener("mouseover", mouseOverCode);
@@ -57,7 +65,7 @@ function init(){
 		height: window.innerHeight,
 		resolution: window.devicePixelRatio,
 		autoDensity: true,
-		antialias: true
+		antialias: false
 	});
 	app2 = new PIXI.Application({
 		view: canvas2,
@@ -65,7 +73,7 @@ function init(){
 		height: window.innerHeight,
 		resolution: window.devicePixelRatio,
 		autoDensity: true,
-		antialias: true,
+		antialias: false,
 		transparent: true
 	});
 	width = app.screen.width;
@@ -95,6 +103,12 @@ function init(){
 	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60,8,true);
 	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80,8,true);
 	let blurFilter5 = new PIXI.filters.KawaseBlurFilter(5,8,true);
+	let bloom = new PIXI.filters.AdvancedBloomFilter();
+	bloom.threshold = .01;
+	bloom.bloomScale = .3;
+	bloom.brightness=.9;
+	bloom.blur = 2;
+	bloom.quality = 1;
 	let glitchFilter = new PIXI.filters.GlitchFilter({
 		slices: 10,
 		offset: 10,
@@ -104,8 +118,8 @@ function init(){
 	CRTFilter.curvature = 2;
 	CRTFilter.vignetting = .2;
 	CRTFilter.vignettingBlur = .2;
-	CRTFilter.noise = .05;
-	CRTFilter.noiseSize	= 1;
+	CRTFilter.noise = .1;
+	CRTFilter.noiseSize	= 3;
 	CRTFilter.lineWidth = 3;
 	CRTFilter.lineContrast = .05;
 	blurFilter.blur = 25;
@@ -120,7 +134,7 @@ function init(){
 	groundLineGraphic.filters = [blurFilter2];
 	fogGraphic.filters = [blurFilter3];
 	groundLineHorizonGraphic.filters = [blurFilter5];
-
+	app.stage.filters= [bloom];
 	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 	app2Graphic.filters = [CRTFilter];
 	//app2.stage.filters = [CRTFilter];
@@ -176,61 +190,29 @@ function doScrollingStuff() {
 	height = app.screen.height;
 	TOP = (height / 2) - (height / 5) - scrollY / 2;
 	let isScrolling = !(oldDeltaScrollY == deltaScrollY);
+
 	if (isScrolling){
 		notScrollingFrames = 0;
 	}else{
 		notScrollingFrames +=1;
 	}
-
-	//if we go too far to the right, slow our delta
-	if (scrollY > 200 && deltaScrollY > 0) {
-		deltaScrollY *= .5;
-	}
-	//if we go too far to the left, slow our delta
-	if (scrollY <= -width && deltaScrollY < 0) {
-		deltaScrollY *=.1 ;
-	}
-	let TOPSPEED = 200;
-	if(deltaScrollY > TOPSPEED){
-		deltaScrollY*=.8
-	}
-	if(deltaScrollY < -TOPSPEED){
-		deltaScrollY*=.8
+	let smoothness = 230;
+	if(notScrollingFrames > 0){
+		let smoothOffset = ((smoothness - Math.min(notScrollingFrames, smoothness)) / smoothness)/10;
+		if(-scrollY < width/2) {
+			scrollY *= (0.9+smoothOffset);
+		}else{
+			let dis = scrollY + width;
+			scrollY -= dis*(.1-smoothOffset);
+		}
 	}
 	scrollY += deltaScrollY;
-	deltaScrollY *= .8;
-	//if we are any bit to the right
-	if (scrollY > 0) {
-		deltaScrollY -= .08 * Math.abs(scrollY);
-		if (scrollY < 100) {
-			deltaScrollY *= .4;
-		}
-		if (deltaScrollY < -10) {
-			deltaScrollY += 2.5;
-		}
-	}else {
-		//if we are to to the left
-		if (notScrollingFrames > 13) {
-			//if we are less than half way to the next point, go back to first stop
-			if (scrollY > -width / 2) {
-				deltaScrollY += .05 * Math.abs(scrollY);
-			} else{
-				if(scrollY > -1 * width) {//if we aren't past, go towards
-					deltaScrollY -= .1 * Math.abs(scrollY + width);
-				}
-			}
-		}
-		if (scrollY < -1 * (width / 2)) {
-			if (scrollY < -1 * width) {
-				deltaScrollY += .1 * Math.abs(scrollY + width);
-			}
-			if(Math.abs(scrollY + width) < 40) {
-				deltaScrollY *= .4;
-			}
-			if(Math.abs(scrollY + width) < 200) {
-				deltaScrollY *= .8;
-			}
-		}
+	deltaScrollY *=.9;
+	if(scrollY > 0){
+		scrollY = 0;
+	}
+	if(scrollY < -width){
+		scrollY = -width;
 	}
 	oldDeltaScrollY = deltaScrollY;
 	nameDOM.style.marginLeft = scrollY + "px";
@@ -379,8 +361,6 @@ function drawHorizon() {
 }
 
 
-
-
 function matrixGround(xdiv, ydiv, top, aspect, speedX, speedY, graphic){
 	/***vertical line loop:***/
 	//Calculate the extra lines needed to compensate for the X aspect not making it all the way to the edge of the canvas
@@ -415,8 +395,8 @@ function sin(x){
 window.addEventListener("resize", function () {
 	app2.renderer.resize(window.innerWidth, window.innerHeight);
 	app.renderer.resize(window.innerWidth, window.innerHeight);
-	generateStars(200,3);
 });
+
 function mouseOverCode() {
 	//document.getElementById("h2Container").style.fontFamily = "Courier New,Courier,monospace";
 }

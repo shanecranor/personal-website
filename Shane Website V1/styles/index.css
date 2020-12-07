@@ -90,17 +90,17 @@ body{
 
 /*SUPER SICK VHS EFFECT*/
 #bioHeader::before{
-	font-size: 12vw;
+	font-size: 8vw;
 	color: white;
 	display: flex;
 	font-family: "VCR", sans-serif;
 	mix-blend-mode:color-dodge;
 }
 #bioHeader {
-	color: rgba(230,230,230,.9);
+	color: rgba(240,240,240,.9);
 	mix-blend-mode: color-dodge;
 	position: relative;
-	font-size: 12vw;
+	font-size: 8vw;
 	display: flex;
 	font-family: "VCR", sans-serif;
 }
