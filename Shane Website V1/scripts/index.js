@@ -1,35 +1,23 @@
 //GLOBAL VARS
+let areHovering;
 let app = null;
 let app2 = null;
-let CRTFilter = null;
-let canvas = null;
-let canvas2 = null;
-let app2Graphic = null;
-let groundGraphic = null;
-let groundLineGraphic = null;
-let groundCoverGraphic = null;
-let groundLineHorizonGraphic = null;
-let starsGraphic = null;
-let starShieldGraphic = null;
-let fogGraphic = null;
+let CRT = null;
+let canvas = null; let canvas2 = null;
+let app2Graphic = null; let groundGraphic = null; let groundLineGraphic = null; let groundCoverGraphic = null; let groundLineHorizonGraphic = null; let starsGraphic = null; let starShieldGraphic = null; let fogGraphic = null;
 let time = 0;
-let width = 0;
-let height = 0;
-let scrollY = -100;
-let oldDeltaScrollY = 0;
-let deltaScrollY = 0;
+let width = 0; let height = 0;
+let scrollY = -100; let oldDeltaScrollY = 0; let deltaScrollY = 0;
 let notScrollingFrames = 40;
 let TOP = 0;
 let nameDOM = null;
 window.onload = function(){
 	let name = document.getElementById("name");
+	name.addEventListener("mouseenter", function(){areHovering = true})
+	name.addEventListener("mouseleave", function(){areHovering = false})
 	let bio = document.getElementById("bioFrame");
-	name.addEventListener("click", function(event){
-		deltaScrollY =-120;
-	});
-	bio.addEventListener("click", function(event){
-		deltaScrollY = 120;
-	});
+	name.addEventListener("click", function(event){deltaScrollY =-120;});
+	bio.addEventListener("click", function(event){deltaScrollY = 120;});
 	canvas = document.getElementById("backgroundCanvas");
 	canvas2 = document.getElementById("onTopCanvas");
 	document.getElementById("code").addEventListener("mouseover", mouseOverCode);
@@ -37,24 +25,56 @@ window.onload = function(){
 	init();
 	app.renderer.resize(window.innerWidth, window.innerHeight);
 	nameDOM = document.getElementById("mainContainer");
-		document.addEventListener('wheel', doScrollAction, false);
+	document.addEventListener('wheel', function(event) {
+		let isFirefox = typeof InstallTrigger !== 'undefined';
+		let delta = 0;
+		if (!event) event = window.event;
+		// normalize the delta
+		delta = -event.deltaY / 2 - (event.deltaX/2);
+		if (isFirefox){
+			delta*=2;
+		}else{
+			delta*=.5;
+		}
+		//calculating the next position of the object
+		deltaScrollY+=delta;
+	}, false);
 }
 
-function doScrollAction(event) {
-	let isFirefox = typeof InstallTrigger !== 'undefined';
-	event.preventDefault();
-	var delta = 0;
-	if (!event) event = window.event;
-	// normalize the delta
-	delta = -event.deltaY / 2 - (event.deltaX/2);
-	if (isFirefox){
-		delta*=2;
-	}else{
-		delta*=.5;
-	}
 
-	//calculating the next position of the object
-	deltaScrollY+=delta;
+
+function initFilters() {
+	let blurFilter = new PIXI.filters.BlurFilter();
+	blurFilter.blur = 25; blurFilter.quality = 5;
+	let blurFilter2 = new PIXI.filters.BlurFilter();
+	blurFilter2.blur = 1; blurFilter2.quality = 2;
+	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60, 8, true);
+	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80, 8, true);
+	let blurFilter5 = new PIXI.filters.KawaseBlurFilter(5, 8, true);
+	let bloom = new PIXI.filters.AdvancedBloomFilter();
+	bloom.threshold = .01; bloom.bloomScale = .3; bloom.brightness = .9; bloom.blur = 2; bloom.quality = 1;
+	CRT = new PIXI.filters.CRTFilter();
+	CRT.curvature = 2; CRT.vignetting = .2; CRT.vignettingBlur = .2; CRT.noise = .1; CRT.noiseSize = 3; CRT.lineWidth = 3; CRT.lineContrast = .05;
+	starShieldGraphic.filters = [blurFilter4];
+	groundGraphic.filters = [blurFilter];
+	groundLineGraphic.filters = [blurFilter2];
+	fogGraphic.filters = [blurFilter3];
+	groundLineHorizonGraphic.filters = [blurFilter5];
+	app.stage.filters = [bloom];
+	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
+	app2Graphic.filters = [CRT];
+}
+
+function initGraphics() {
+	app2Graphic = new PIXI.Graphics();
+	starsGraphic = new PIXI.Graphics();
+	starShieldGraphic = new PIXI.Graphics();
+	groundCoverGraphic = new PIXI.Graphics();
+	groundGraphic = new PIXI.Graphics();
+	groundLineGraphic = new PIXI.Graphics();
+	groundLineHorizonGraphic = new PIXI.Graphics();
+	fogGraphic = new PIXI.Graphics();
+	fogGraphic.padding = 300;
 }
 
 function init(){
@@ -78,66 +98,10 @@ function init(){
 	});
 	width = app.screen.width;
 	height = app.screen.height;
-	app2Graphic = new PIXI.Graphics();
-	starsGraphic = new PIXI.Graphics();
-	starShieldGraphic = new PIXI.Graphics();
-	groundCoverGraphic = new PIXI.Graphics();
-	groundGraphic = new PIXI.Graphics();
-	groundLineGraphic = new PIXI.Graphics();
-	groundLineHorizonGraphic = new PIXI.Graphics();
-	fogGraphic = new PIXI.Graphics();
 
-	let reflectionFilter = new PIXI.filters.ReflectionFilter();
-	reflectionFilter.alpha = [.3,.9];
-	reflectionFilter.boundary = .7;
-	reflectionFilter.amplitude = [1,0]
-	reflectionFilter.waveLength = [1,100];
-	let glowFilter = new PIXI.filters.GlowFilter();
-	glowFilter.distance = 20;
-	glowFilter.outerStrength = 10;
-	glowFilter.color = hslToHex(.8,1,1);
-	glowFilter.knockout = true;
-	glowFilter.quality = .2
-	let blurFilter = new PIXI.filters.BlurFilter();
-	let blurFilter2 = new PIXI.filters.BlurFilter();
-	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60,8,true);
-	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80,8,true);
-	let blurFilter5 = new PIXI.filters.KawaseBlurFilter(5,8,true);
-	let bloom = new PIXI.filters.AdvancedBloomFilter();
-	bloom.threshold = .01;
-	bloom.bloomScale = .3;
-	bloom.brightness=.9;
-	bloom.blur = 2;
-	bloom.quality = 1;
-	let glitchFilter = new PIXI.filters.GlitchFilter({
-		slices: 10,
-		offset: 10,
-		fillMode: 2 //LOOP
-	});
-	CRTFilter = new PIXI.filters.CRTFilter();
-	CRTFilter.curvature = 2;
-	CRTFilter.vignetting = .2;
-	CRTFilter.vignettingBlur = .2;
-	CRTFilter.noise = .1;
-	CRTFilter.noiseSize	= 3;
-	CRTFilter.lineWidth = 3;
-	CRTFilter.lineContrast = .05;
-	blurFilter.blur = 25;
-	blurFilter.quality = 5;
-	blurFilter2.blur = 1;
+	initGraphics();
+	initFilters();
 
-	app.stage.padding = 300;
-	fogGraphic.padding = 300;
-	starShieldGraphic.filters = [blurFilter4];
-	//starsGraphic.filters = [reflectionFilter];
-	groundGraphic.filters = [blurFilter];
-	groundLineGraphic.filters = [blurFilter2];
-	fogGraphic.filters = [blurFilter3];
-	groundLineHorizonGraphic.filters = [blurFilter5];
-	app.stage.filters= [bloom];
-	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
-	app2Graphic.filters = [CRTFilter];
-	//app2.stage.filters = [CRTFilter];
 	app2.ticker.maxFPS = 90;
 	app.stage.addChild(starsGraphic);
 	app.stage.addChild(starShieldGraphic);
@@ -176,8 +140,16 @@ function doGlitchAnimation() {
 	}
 }
 
+function animateCRT() {
+	CRT.seed = Math.random();
+	CRT.time += 0.2;
+}
+
 function animationLoop() {
-	doGlitchAnimation();
+	animateCRT();
+	if(areHovering) {
+		doGlitchAnimation();
+	}
 	doScrollingStuff();
 	drawBottomGrid();
 	drawHorizon();
@@ -190,6 +162,7 @@ function doScrollingStuff() {
 	height = app.screen.height;
 	TOP = (height / 2) - (height / 5) - scrollY / 2;
 	let isScrolling = !(oldDeltaScrollY == deltaScrollY);
+	let startScroll = scrollY;
 
 	if (isScrolling){
 		notScrollingFrames = 0;
@@ -215,6 +188,17 @@ function doScrollingStuff() {
 		scrollY = -width;
 	}
 	oldDeltaScrollY = deltaScrollY;
+
+	let endScroll = scrollY;
+	if(Math.abs(startScroll-endScroll) < 1){
+		if(areHovering) {
+			document.getElementById("name").style.filter = "url(#filter) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+		}else {
+			document.getElementById("name").style.filter = "url(#filterNoGlitch) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+		}
+	}else{
+		document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+	}
 	nameDOM.style.marginLeft = scrollY + "px";
 
 }
@@ -262,8 +246,6 @@ function drawStarShield(width, height) {
 	app2Graphic.beginFill(hslToHex(0,0,.95));
 	app2Graphic.drawRect(0,0,width,height);
 	app2Graphic.drawRect(width-10,height-10,10,10);
-	CRTFilter.seed = Math.random();
-	CRTFilter.time += 0.2;
 	starShieldGraphic.clear();
 	starShieldGraphic.beginFill(0x000000);
 	starShieldGraphic.alpha = .9

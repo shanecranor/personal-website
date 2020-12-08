@@ -172,12 +172,7 @@ h1 {
   -webkit-text-stroke-color: white;
 	paint-order: stroke fill;
 }
-h1{
-	filter: url(#filterNoGlitch) drop-shadow(0px 0px 20px rgba(255,255,255,.2));
-}
-h1:hover{
-	filter: url(#filter) drop-shadow(0px 0px 20px rgba(255,255,255,.2));
-}
+
 a {
 	justify-content: center;
 	text-align: center;
