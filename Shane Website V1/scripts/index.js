@@ -199,7 +199,7 @@ function doScrollingStuff() {
 	}else{
 		document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
 	}
-	nameDOM.style.marginLeft = scrollY + "px";
+	nameDOM.style.transform = "translate("+scrollY + "px, 0px)";
 
 }
 
