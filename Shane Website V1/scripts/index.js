@@ -3,8 +3,11 @@ let areHovering;
 let app = null;
 let app2 = null;
 let CRT = null;
+let fpsBelowThreshold = 0;
+let graphicsQuality = 4;
 let canvas = null; let canvas2 = null;
 let app2Graphic = null; let groundGraphic = null; let groundLineGraphic = null; let groundCoverGraphic = null; let groundLineHorizonGraphic = null; let starsGraphic = null; let starShieldGraphic = null; let fogGraphic = null;
+let blur = null;
 let time = 0;
 let width = 0; let height = 0;
 let scrollY = -100; let oldDeltaScrollY = 0; let deltaScrollY = 0;
@@ -51,8 +54,9 @@ function initFilters() {
 	let blurFilter3 = new PIXI.filters.KawaseBlurFilter(60, 8, true);
 	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80, 8, true);
 	let blurFilter5 = new PIXI.filters.KawaseBlurFilter(5, 8, true);
+	blur = new PIXI.filters.KawaseBlurFilter(0, 3, true);
 	let bloom = new PIXI.filters.AdvancedBloomFilter();
-	bloom.threshold = .01; bloom.bloomScale = .3; bloom.brightness = .9; bloom.blur = 2; bloom.quality = 1;
+	bloom.threshold =0; bloom.bloomScale = .3; bloom.brightness = .9; bloom.blur = 0; bloom.quality = 0;
 	CRT = new PIXI.filters.CRTFilter();
 	CRT.curvature = 2; CRT.vignetting = .2; CRT.vignettingBlur = .2; CRT.noise = .1; CRT.noiseSize = 3; CRT.lineWidth = 3; CRT.lineContrast = .05;
 	starShieldGraphic.filters = [blurFilter4];
@@ -60,7 +64,7 @@ function initFilters() {
 	groundLineGraphic.filters = [blurFilter2];
 	fogGraphic.filters = [blurFilter3];
 	groundLineHorizonGraphic.filters = [blurFilter5];
-	app.stage.filters = [bloom];
+	app.stage.filters = [bloom, blur];
 	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 	app2Graphic.filters = [CRT];
 }
@@ -146,6 +150,13 @@ function animateCRT() {
 }
 
 function animationLoop() {
+	if(app.ticker.FPS < 24){
+		fpsBelowThreshold++;
+	}
+	if(fpsBelowThreshold > 20){
+		fpsBelowThreshold = 0;
+		graphicsQuality--;
+	}
 	animateCRT();
 	if(areHovering) {
 		doGlitchAnimation();
@@ -188,19 +199,50 @@ function doScrollingStuff() {
 		scrollY = -width;
 	}
 	oldDeltaScrollY = deltaScrollY;
-
+	console.log(app.ticker.FPS + " " + fpsBelowThreshold)
 	let endScroll = scrollY;
-	if(Math.abs(startScroll-endScroll) < 1){
+	let isNotScrolling = Math.abs(startScroll-endScroll) < 1
+	if(graphicsQuality >= 3 ){
 		if(areHovering) {
 			document.getElementById("name").style.filter = "url(#filter) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
 		}else {
 			document.getElementById("name").style.filter = "url(#filterNoGlitch) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
 		}
-	}else{
-		document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+	} else if(graphicsQuality >= 2){
+		if(isNotScrolling){
+			if(areHovering) {
+				document.getElementById("name").style.filter = "url(#filter) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+			}else {
+				document.getElementById("name").style.filter = "url(#filterNoGlitch) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+			}
+		}else{
+			document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+		}
+	} else if(graphicsQuality >= 1){
+		if(isNotScrolling){
+			if(areHovering) {
+				document.getElementById("name").style.filter = "url(#filter) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+			}else {
+				document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+			}
+		}else{
+			document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+		}
+	} else if(graphicsQuality < 1){
+		if(isNotScrolling){
+			if(areHovering) {
+				document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
+			}else {
+				document.getElementById("name").style.filter = "";
+			}
+		}else{
+			document.getElementById("name").style.filter = "";
+		}
 	}
-	nameDOM.style.transform = "translate("+scrollY + "px, 0px)";
 
+	nameDOM.style.transform = "translate("+Math.ceil(scrollY) + "px, 0px)";
+	blur.blur = (Math.pow(Math.abs(scrollY/width),10))*10;
+	blur.quality = 1;
 }
 
 

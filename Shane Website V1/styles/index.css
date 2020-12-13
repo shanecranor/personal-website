@@ -111,7 +111,7 @@ body{
 	position: absolute;
 	top: 0;
 	left: 0;
-	filter: blur(3px);
+	filter: blur(2px);
 	mix-blend-mode: soft-light;
 }
 #bioHeader:before {
@@ -121,7 +121,7 @@ body{
 }
 #bioHeader:after {
 	content: attr(data-text);
-	color: rgba(100,100,255,.9);
+	color: rgba(100,120,255,.9);
 	transform: translate(1px, 1px);
 }
 /*END SUPER SICK VHS EFFECT*/
