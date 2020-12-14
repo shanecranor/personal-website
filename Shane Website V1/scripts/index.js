@@ -1,4 +1,6 @@
 //GLOBAL VARS
+let bloom = null;
+let lighten = null;
 let areHovering;
 let app = null;
 let app2 = null;
@@ -47,6 +49,8 @@ window.onload = function(){
 
 
 function initFilters() {
+	lighten = new PIXI.filters.AdjustmentFilter();
+	lighten.brightness = 1.2;
 	let blurFilter = new PIXI.filters.BlurFilter();
 	blurFilter.blur = 25; blurFilter.quality = 5;
 	let blurFilter2 = new PIXI.filters.BlurFilter();
@@ -55,7 +59,7 @@ function initFilters() {
 	let blurFilter4 = new PIXI.filters.KawaseBlurFilter(80, 8, true);
 	let blurFilter5 = new PIXI.filters.KawaseBlurFilter(5, 8, true);
 	blur = new PIXI.filters.KawaseBlurFilter(0, 3, true);
-	let bloom = new PIXI.filters.AdvancedBloomFilter();
+	bloom = new PIXI.filters.AdvancedBloomFilter();
 	bloom.threshold =0; bloom.bloomScale = .3; bloom.brightness = .9; bloom.blur = 0; bloom.quality = 0;
 	CRT = new PIXI.filters.CRTFilter();
 	CRT.curvature = 2; CRT.vignetting = .2; CRT.vignettingBlur = .2; CRT.noise = .1; CRT.noiseSize = 3; CRT.lineWidth = 3; CRT.lineContrast = .05;
@@ -64,7 +68,6 @@ function initFilters() {
 	groundLineGraphic.filters = [blurFilter2];
 	fogGraphic.filters = [blurFilter3];
 	groundLineHorizonGraphic.filters = [blurFilter5];
-	app.stage.filters = [bloom, blur];
 	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 	app2Graphic.filters = [CRT];
 }
@@ -130,7 +133,6 @@ function doGlitchAnimation() {
 	randX = shudderSize*(Math.random()-0.5);
 	obj.setAttribute("transform","translate("+randX+","+randY+ ")")
 	if(Math.random()<.9){return}
-
 	for(let i = 0; i < 7; i++){
 		let rect = document.getElementById("rect" + i);
 		randX = Math.random()*60;
@@ -153,7 +155,7 @@ function animationLoop() {
 	if(app.ticker.FPS < 24){
 		fpsBelowThreshold++;
 	}
-	if(fpsBelowThreshold > 20){
+	if(fpsBelowThreshold > 10){
 		fpsBelowThreshold = 0;
 		graphicsQuality--;
 	}
@@ -174,7 +176,6 @@ function doScrollingStuff() {
 	TOP = (height / 2) - (height / 5) - scrollY / 2;
 	let isScrolling = !(oldDeltaScrollY == deltaScrollY);
 	let startScroll = scrollY;
-
 	if (isScrolling){
 		notScrollingFrames = 0;
 	}else{
@@ -203,6 +204,12 @@ function doScrollingStuff() {
 	let endScroll = scrollY;
 	let isNotScrolling = Math.abs(startScroll-endScroll) < 1
 	if(graphicsQuality >= 3 ){
+		if(!isNotScrolling){
+			for(let j = 0; j < document.querySelectorAll("u").length; j++) {
+				document.querySelectorAll("u")[j].style.filter = "url(#filterNoGlitch) drop-shadow(0px 0px 9px rgba(255,255,255,.1))"
+			}
+		}
+		app.stage.filters = [bloom];
 		if(areHovering) {
 			document.getElementById("name").style.filter = "url(#filter) drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
 		}else {
@@ -229,6 +236,10 @@ function doScrollingStuff() {
 			document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
 		}
 	} else if(graphicsQuality < 1){
+		app.stage.filters = [lighten];
+		for(let j = 0; j < document.querySelectorAll("U").length; j++) {
+			document.querySelectorAll("u")[j].style.removeProperty('filter');
+		}
 		if(isNotScrolling){
 			if(areHovering) {
 				document.getElementById("name").style.filter = "drop-shadow(0px 0px 20px rgba(255,255,255,.2))";
@@ -239,9 +250,15 @@ function doScrollingStuff() {
 			document.getElementById("name").style.filter = "";
 		}
 	}
-
+	if(window.safari !== undefined){
+		document.getElementById("name").style.filter = "";
+		for(let j = 0; j < document.querySelectorAll("u").length; j++) {
+			document.querySelectorAll("u")[j].style.filter = '';
+		}
+	}
 	nameDOM.style.transform = "translate("+Math.ceil(scrollY) + "px, 0px)";
-	blur.blur = (Math.pow(Math.abs(scrollY/width),10))*10;
+	lighten.brightness = 1.2 - ((Math.pow(Math.abs(scrollY/width),5))*.7);
+	bloom.brightness =  .9 - (Math.pow(Math.abs(scrollY/width),5));
 	blur.quality = 1;
 }
 
@@ -281,7 +298,6 @@ function generateStars(num, size){
 	drawGroundCover(height, width);
 	//graphic.endFill();
 }
-
 function drawStarShield(width, height) {
 	app2Graphic.clear();
 	app2Graphic.alpha=1;
@@ -294,14 +310,12 @@ function drawStarShield(width, height) {
 	starShieldGraphic.drawEllipse(width / 2, 6 * height / 8, width / 1.5, height / 2);
 	starShieldGraphic.drawEllipse(0, 0, 1, 1);
 }
-
 function drawGroundCover(height, width) {
 	groundCoverGraphic.clear();
 	groundCoverGraphic.beginFill(0x000000);
 	groundCoverGraphic.alpha = 1;
 	groundCoverGraphic.drawRect(0, height - (TOP), width, height + 100)
 }
-
 function drawBottomGrid() {
 	let XDIV = 330;
 	let YDIV = 23;
@@ -349,7 +363,6 @@ function drawBottomGrid() {
 	})
 	matrixGround(XDIV, YDIV, TOP, ASPECT, SPEEDX, SPEEDY, groundGraphic);
 }
-
 function drawFog() {
 	fogGraphic.clear();
 	fogGraphic.alpha = 1;
@@ -374,7 +387,6 @@ function drawFog() {
 		3*width/8+width/o-xOffset,height-height/20);
 	//fogGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 }
-
 function drawHorizon() {
 	groundLineHorizonGraphic.clear();
 	groundLineHorizonGraphic.beginFill(0xFFFFFF);
@@ -383,8 +395,6 @@ function drawHorizon() {
 	groundLineHorizonGraphic.drawRect(0,0,.1,.1);
 	groundLineHorizonGraphic.drawRect(width,height,.1,.1);
 }
-
-
 function matrixGround(xdiv, ydiv, top, aspect, speedX, speedY, graphic){
 	/***vertical line loop:***/
 	//Calculate the extra lines needed to compensate for the X aspect not making it all the way to the edge of the canvas
@@ -408,7 +418,6 @@ function matrixGround(xdiv, ydiv, top, aspect, speedX, speedY, graphic){
 		line(0, newY, width, newY, graphic)
 	}
 }
-
 function line(x0,y0,x1,y1, graphic){
 	graphic.moveTo(x0,y0);
 	graphic.lineTo(x1,y1);
