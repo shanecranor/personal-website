@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;800&family=Roboto+Slab&family=Work+Sans:wght@100;200;400;700;800&display=swap"
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -27,142 +27,158 @@
         Shane Cranor
     </h1>
     <div id="h2Container">
-        <a id="code" href="/Code/index.html" >    <u class="links">Code</u></a>
-        <a href="https://codepen.io/Thisisntme/" ><u class="links">Music</u></a>
-        <a href="https://codepen.io/Thisisntme/" ><u class="links">Art</u></a>
-        <a href="https://codepen.io/Thisisntme/" ><u class="links">Photos</u></a>
+        <a id="code" href="/Code/index.html" class="links1"> <u class="links">Code</u></a>
+        <a href="https://codepen.io/Thisisntme/" class="links1"><u class="links">Music</u></a>
+        <a href="https://codepen.io/Thisisntme/" class="links1"><u class="links">Art</u></a>
+        <a href="https://codepen.io/Thisisntme/" class="links1"><u class="links">Photos</u></a>
     </div>
     <div id="bioFrame">
         <div id="bioHeader" data-text="C:\SHANE\BIO>">
             C:\SHANE\BIO>
-        </div>
+          </div>
+        <div id="flexBio">
+        <img src="img/bioimg.jpeg" alt="profile photo"/>
         <div id="bioContents">
-            <p>Hello, I can see that you have found my website! I'm currently studying for my
-                Bachelors ( + maybe a masters?) in Computer Science. My interests (in no particular order)
-            include: machine learning, computers, software design, web development, building hardware,
-                music, bass, guitar, drums, keyboards, mixing and mastering, experimenting/tinkering with anything,
-                and ultimate frisbee.</p>
+            <p>Hello, welcome to my website! I am currently studying for my
+                Bachelors in Computer Science. My interests (in no particular order)
+                include:</p>
+            <ul>
+                <li><b>computers:</b> machine learning, software design, web dev, electronics</li>
+                <li><b>music:</b> bass, guitar, drums, keyboards, mixing and mastering</li>
+                <li>experimenting/tinkering with absolutely anything</li>
+                <li>ultimate frisbee</li>
+            </ul>
+            <p>I play bass and do mixing and mastering for a band called The Electric Army, which you can check out <a
+                    href="https://open.spotify.com/artist/39DDKLQfC72gb8Q8cy4RIr">on spotify</a> or your <a
+                    href="https://songwhip.com/theelectricarmy">platform of choice!</a></p>
+        </div>
         </div>
     </div>
 </div>
 <canvas id="onTopCanvas"></canvas>
 <!-- https://codepen.io/ZaneMiller/pen/wWYQBL?editors=1100 -->
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%"
+     height="100%">
     <defs>
         <!-- MASK DEFS -->
         <g id="glitch-mask-left" transform="translate(0, -2.5)">
-            <rect id="rect0" x="5%" y="45%" width="7%" height="5%" fill="white" />
-            <rect id="rect1" x="60%" y="25%" width="7%" height="4%" fill="white" />
-            <rect id="rect2" x="35%" y="75%" width="10%" height="4%" fill="white" />
-            <rect id="rect3" x="25%" y="50%" width="30%" height="2%" fill="white" />
+            <rect id="rect0" x="5%" y="45%" width="7%" height="5%" fill="white"/>
+            <rect id="rect1" x="60%" y="25%" width="7%" height="4%" fill="white"/>
+            <rect id="rect2" x="35%" y="75%" width="10%" height="4%" fill="white"/>
+            <rect id="rect3" x="25%" y="50%" width="30%" height="2%" fill="white"/>
         </g>
 
         <g id="glitch-mask-right" transform="translate(0, -2.5)">
-            <rect id="rect4" x="5%" y="35%" width="11%" height="2%" fill="white" />
-            <rect id="rect5" x="60%" y="60%" width="20%" height="1%" fill="white" />
-            <rect id="rect6" x="80%" y="35%" width="20%" height="3%" fill="white" />
+            <rect id="rect4" x="5%" y="35%" width="11%" height="2%" fill="white"/>
+            <rect id="rect5" x="60%" y="60%" width="20%" height="1%" fill="white"/>
+            <rect id="rect6" x="80%" y="35%" width="20%" height="3%" fill="white"/>
         </g>
-
 
 
         <filter id="filter">
             <!-- FLOODS -->
-            <feFlood flood-color="#0070E6" result="COLOR-left" />
-            <feFlood flood-color="#E500E6" result="COLOR-right" />
+            <feFlood flood-color="#0070E6" result="COLOR-left"/>
+            <feFlood flood-color="#E500E6" result="COLOR-right"/>
 
             <!-- MASKS -->
-            <feImage xlink:href="#glitch-mask-left" result="MASK-left-shift" />
-            <feImage xlink:href="#glitch-mask-right" result="MASK-right-shift" />
+            <feImage xlink:href="#glitch-mask-left" result="MASK-left-shift"/>
+            <feImage xlink:href="#glitch-mask-right" result="MASK-right-shift"/>
 
 
             <!-- LEFT SHIFTED -->
-            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="in" result="LEFT_SHIFT_10" />
-            <feOffset dx="-3" dy="0" in="LEFT_SHIFT_10" result="LEFT_SHIFT_20" />
+            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="in" result="LEFT_SHIFT_10"/>
+            <feOffset dx="-3" dy="0" in="LEFT_SHIFT_10" result="LEFT_SHIFT_20"/>
 
             <!-- RIGHT SHIFTED -->
-            <feComposite in="SourceGraphic" in2="MASK-right-shift" operator="in" result="RIGHT_SHIFT_10" />
+            <feComposite in="SourceGraphic" in2="MASK-right-shift" operator="in" result="RIGHT_SHIFT_10"/>
             <!-- RIGHT SHIFT RESULT -->
-            <feOffset dx="3" dy="0" in="RIGHT_SHIFT_10" result="RIGHT_SHIFT_20" />
+            <feOffset dx="3" dy="0" in="RIGHT_SHIFT_10" result="RIGHT_SHIFT_20"/>
 
 
             <!-- REMAINDER -->
-            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="out" result="REMAINDER_10" />
-            <feComposite in="REMAINDER_10" in2="MASK-right-shift" operator="out" result="REMAINDER_20" />
+            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="out" result="REMAINDER_10"/>
+            <feComposite in="REMAINDER_10" in2="MASK-right-shift" operator="out" result="REMAINDER_20"/>
 
             <feMerge result="RESULT_10">
-                <feMergeNode in="RIGHT_SHIFT_20" />                    <feMergeNode in="LEFT_SHIFT_20" />
-                <feMergeNode in="REMAINDER_20" />
+                <feMergeNode in="RIGHT_SHIFT_20"/>
+                <feMergeNode in="LEFT_SHIFT_20"/>
+                <feMergeNode in="REMAINDER_20"/>
             </feMerge>
 
 
-
             <!-- REMAINDER LEFT -->
-            <feComposite in="COLOR-left" in2="RESULT_10" operator="in" result="RESULT_LEFT_10" />
-            <feOffset dx="3" dy="1" in="RESULT_LEFT_10" result="RESULT_LEFT_20" />
+            <feComposite in="COLOR-left" in2="RESULT_10" operator="in" result="RESULT_LEFT_10"/>
+            <feOffset dx="3" dy="1" in="RESULT_LEFT_10" result="RESULT_LEFT_20"/>
 
             <!-- REMAINDER RIGHT -->
-            <feComposite in="COLOR-right" in2="RESULT_10" operator="in" result="RESULT_RIGHT_10" />
-            <feOffset dx="-3" dy="-1" in="RESULT_RIGHT_10" result="RESULT_RIGHT_20" />
+            <feComposite in="COLOR-right" in2="RESULT_10" operator="in" result="RESULT_RIGHT_10"/>
+            <feOffset dx="-3" dy="-1" in="RESULT_RIGHT_10" result="RESULT_RIGHT_20"/>
 
-            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_RIGHT_20" edgeMode="none" result="blurRight"/>
-            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_LEFT_20" edgeMode="none" result="blurLeft"/>
+            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_RIGHT_20"
+                            edgeMode="none" result="blurRight"/>
+            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_LEFT_20"
+                            edgeMode="none" result="blurLeft"/>
             <feMerge result="RESULT_20">
-                <feMergeNode in="blurRight" />
-                <feMergeNode in="blurLeft" />
-                <feMergeNode in="RESULT_10" />
+                <feMergeNode in="blurRight"/>
+                <feMergeNode in="blurLeft"/>
+                <feMergeNode in="RESULT_10"/>
             </feMerge>
 
         </filter>
 
     </defs>
 </svg>
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%"
+     height="100%">
     <defs>
         <filter id="filterNoGlitch" color-interpolation-filters="sRGB">
             <!-- FLOODS -->
-            <feFlood flood-color="#0060FF" result="COLOR-left" />
-            <feFlood flood-color="#FF00FF" result="COLOR-right" />
+            <feFlood flood-color="#0060FF" result="COLOR-left"/>
+            <feFlood flood-color="#FF00FF" result="COLOR-right"/>
 
             <!-- MASKS -->
-            <feImage xlink:href="" result="MASK-left-shift" />
-            <feImage xlink:href="" result="MASK-right-shift" />
+            <feImage xlink:href="" result="MASK-left-shift"/>
+            <feImage xlink:href="" result="MASK-right-shift"/>
 
 
             <!-- LEFT SHIFTED -->
-            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="in" result="LEFT_SHIFT_10" />
-            <feOffset dx="-3" dy="0" in="LEFT_SHIFT_10" result="LEFT_SHIFT_20" />
+            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="in" result="LEFT_SHIFT_10"/>
+            <feOffset dx="-3" dy="0" in="LEFT_SHIFT_10" result="LEFT_SHIFT_20"/>
 
             <!-- RIGHT SHIFTED -->
-            <feComposite in="SourceGraphic" in2="MASK-right-shift" operator="in" result="RIGHT_SHIFT_10" />
+            <feComposite in="SourceGraphic" in2="MASK-right-shift" operator="in" result="RIGHT_SHIFT_10"/>
             <!-- RIGHT SHIFT RESULT -->
-            <feOffset dx="3" dy="0" in="RIGHT_SHIFT_10" result="RIGHT_SHIFT_20" />
+            <feOffset dx="3" dy="0" in="RIGHT_SHIFT_10" result="RIGHT_SHIFT_20"/>
 
 
             <!-- REMAINDER -->
-            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="out" result="REMAINDER_10" />
-            <feComposite in="REMAINDER_10" in2="MASK-right-shift" operator="out" result="REMAINDER_20" />
+            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="out" result="REMAINDER_10"/>
+            <feComposite in="REMAINDER_10" in2="MASK-right-shift" operator="out" result="REMAINDER_20"/>
 
             <feMerge result="RESULT_10">
-                <feMergeNode in="RIGHT_SHIFT_20" />                    <feMergeNode in="LEFT_SHIFT_20" />
-                <feMergeNode in="REMAINDER_20" />
+                <feMergeNode in="RIGHT_SHIFT_20"/>
+                <feMergeNode in="LEFT_SHIFT_20"/>
+                <feMergeNode in="REMAINDER_20"/>
             </feMerge>
 
 
-
             <!-- REMAINDER LEFT -->
-            <feComposite in="COLOR-left" in2="RESULT_10" operator="in" result="RESULT_LEFT_10" />
-            <feOffset dx="2" dy="2" in="RESULT_LEFT_10" result="RESULT_LEFT_20" />
+            <feComposite in="COLOR-left" in2="RESULT_10" operator="in" result="RESULT_LEFT_10"/>
+            <feOffset dx="2" dy="2" in="RESULT_LEFT_10" result="RESULT_LEFT_20"/>
 
             <!-- REMAINDER RIGHT -->
-            <feComposite in="COLOR-right" in2="RESULT_10" operator="in" result="RESULT_RIGHT_10" />
-            <feOffset dx="-1" dy="-1" in="RESULT_RIGHT_10" result="RESULT_RIGHT_20" />
+            <feComposite in="COLOR-right" in2="RESULT_10" operator="in" result="RESULT_RIGHT_10"/>
+            <feOffset dx="-1" dy="-1" in="RESULT_RIGHT_10" result="RESULT_RIGHT_20"/>
 
-            <feGaussianBlur stdDeviation="3 2" x="0%" y="0%" width="100%" height="100%" in="RESULT_RIGHT_20" edgeMode="none" result="blurRight"/>
-            <feGaussianBlur stdDeviation="3 2" x="0%" y="0%" width="100%" height="100%" in="RESULT_LEFT_20" edgeMode="none" result="blurLeft"/>
-            <feBlend mode="screen" x="0%" y="0%" width="100%" height="100%" in="blurRight" in2="blurLeft" result="blend"/>
+            <feGaussianBlur stdDeviation="3 2" x="0%" y="0%" width="100%" height="100%" in="RESULT_RIGHT_20"
+                            edgeMode="none" result="blurRight"/>
+            <feGaussianBlur stdDeviation="3 2" x="0%" y="0%" width="100%" height="100%" in="RESULT_LEFT_20"
+                            edgeMode="none" result="blurLeft"/>
+            <feBlend mode="screen" x="0%" y="0%" width="100%" height="100%" in="blurRight" in2="blurLeft"
+                     result="blend"/>
             <feMerge result="RESULT_20">
-                <feMergeNode in="blend" />
-                <feMergeNode in="RESULT_10" />
+                <feMergeNode in="blend"/>
+                <feMergeNode in="RESULT_10"/>
             </feMerge>
 
         </filter>
@@ -170,53 +186,57 @@
     </defs>
 </svg>
 
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%"
+     height="100%">
     <defs>
         <filter id="filterNoGlitch2" color-interpolation-filters="sRGB">
             <!-- FLOODS -->
-            <feFlood flood-color="#0060FF" result="COLOR-left" />
-            <feFlood flood-color="#FF00FF" result="COLOR-right" />
+            <feFlood flood-color="#0060FF" result="COLOR-left"/>
+            <feFlood flood-color="#FF00FF" result="COLOR-right"/>
 
             <!-- MASKS -->
-            <feImage xlink:href="" result="MASK-left-shift" />
-            <feImage xlink:href="" result="MASK-right-shift" />
+            <feImage xlink:href="" result="MASK-left-shift"/>
+            <feImage xlink:href="" result="MASK-right-shift"/>
 
 
             <!-- LEFT SHIFTED -->
-            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="in" result="LEFT_SHIFT_10" />
-            <feOffset dx="-3" dy="0" in="LEFT_SHIFT_10" result="LEFT_SHIFT_20" />
+            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="in" result="LEFT_SHIFT_10"/>
+            <feOffset dx="-3" dy="0" in="LEFT_SHIFT_10" result="LEFT_SHIFT_20"/>
 
             <!-- RIGHT SHIFTED -->
-            <feComposite in="SourceGraphic" in2="MASK-right-shift" operator="in" result="RIGHT_SHIFT_10" />
+            <feComposite in="SourceGraphic" in2="MASK-right-shift" operator="in" result="RIGHT_SHIFT_10"/>
             <!-- RIGHT SHIFT RESULT -->
-            <feOffset dx="3" dy="0" in="RIGHT_SHIFT_10" result="RIGHT_SHIFT_20" />
+            <feOffset dx="3" dy="0" in="RIGHT_SHIFT_10" result="RIGHT_SHIFT_20"/>
 
 
             <!-- REMAINDER -->
-            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="out" result="REMAINDER_10" />
-            <feComposite in="REMAINDER_10" in2="MASK-right-shift" operator="out" result="REMAINDER_20" />
+            <feComposite in="SourceGraphic" in2="MASK-left-shift" operator="out" result="REMAINDER_10"/>
+            <feComposite in="REMAINDER_10" in2="MASK-right-shift" operator="out" result="REMAINDER_20"/>
 
             <feMerge result="RESULT_10">
-                <feMergeNode in="RIGHT_SHIFT_20" />                    <feMergeNode in="LEFT_SHIFT_20" />
-                <feMergeNode in="REMAINDER_20" />
+                <feMergeNode in="RIGHT_SHIFT_20"/>
+                <feMergeNode in="LEFT_SHIFT_20"/>
+                <feMergeNode in="REMAINDER_20"/>
             </feMerge>
 
 
-
             <!-- REMAINDER LEFT -->
-            <feComposite in="COLOR-left" in2="RESULT_10" operator="in" result="RESULT_LEFT_10" />
-            <feOffset dx="1" dy="1" in="RESULT_LEFT_10" result="RESULT_LEFT_20" />
+            <feComposite in="COLOR-left" in2="RESULT_10" operator="in" result="RESULT_LEFT_10"/>
+            <feOffset dx="1" dy="1" in="RESULT_LEFT_10" result="RESULT_LEFT_20"/>
 
             <!-- REMAINDER RIGHT -->
-            <feComposite in="COLOR-right" in2="RESULT_10" operator="in" result="RESULT_RIGHT_10" />
-            <feOffset dx="-1" dy="-1" in="RESULT_RIGHT_10" result="RESULT_RIGHT_20" />
+            <feComposite in="COLOR-right" in2="RESULT_10" operator="in" result="RESULT_RIGHT_10"/>
+            <feOffset dx="-1" dy="-1" in="RESULT_RIGHT_10" result="RESULT_RIGHT_20"/>
 
-            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_RIGHT_20" edgeMode="none" result="blurRight"/>
-            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_LEFT_20" edgeMode="none" result="blurLeft"/>
-            <feBlend mode="screen" x="0%" y="0%" width="100%" height="100%" in="blurRight" in2="blurLeft" result="blend"/>
+            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_RIGHT_20"
+                            edgeMode="none" result="blurRight"/>
+            <feGaussianBlur stdDeviation="1 1" x="0%" y="0%" width="100%" height="100%" in="RESULT_LEFT_20"
+                            edgeMode="none" result="blurLeft"/>
+            <feBlend mode="screen" x="0%" y="0%" width="100%" height="100%" in="blurRight" in2="blurLeft"
+                     result="blend"/>
             <feMerge result="RESULT_20">
-                <feMergeNode in="blend" />
-                <feMergeNode in="RESULT_10" />
+                <feMergeNode in="blend"/>
+                <feMergeNode in="RESULT_10"/>
             </feMerge>
 
         </filter>

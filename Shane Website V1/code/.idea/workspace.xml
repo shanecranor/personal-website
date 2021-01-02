@@ -2,8 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f58f1e8-4123-4a53-968d-d683285d35fc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Photos/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Photos/scripts/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Photos/styles/index.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../scripts/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../scripts/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/../styles/index.css" afterDir="false" />
@@ -32,6 +37,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -43,6 +49,8 @@
       <option name="presentableId" value="Default" />
       <updated>1607845037777</updated>
       <workItem from="1607845038800" duration="883000" />
+      <workItem from="1608249377635" duration="1370000" />
+      <workItem from="1609379380135" duration="1944000" />
     </task>
     <servers />
   </component>
@@ -51,5 +59,22 @@
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="588" y="398" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1608251092681">
+      <screen x="0" y="23" width="1680" height="1027" />
+    </state>
+    <state x="588" y="398" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.23.1680.1027@0.23.1680.1027" timestamp="1608251092681" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/scripts/index.js</url>
+          <line>1</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

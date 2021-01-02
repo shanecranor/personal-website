@@ -85,7 +85,6 @@ body{
 	-moz-transform: scale(1);
 	-o-transform: scale(1);
 	transform: scale(1);
-
 }
 
 /*SUPER SICK VHS EFFECT*/
@@ -103,6 +102,7 @@ body{
 	font-size: 8vw;
 	display: flex;
 	font-family: "VCR", sans-serif;
+	padding-bottom: 30px;
 }
 
 #bioHeader:before, #bioHeader:after {
@@ -125,16 +125,38 @@ body{
 /*END SUPER SICK VHS EFFECT*/
 #bioContents{
 	color: white;
-	width: 80vw;
+	width: 40vw;
 	height: auto;
-	display: flex;
+	display: inline;
 	font-family: "Poppins", sans-serif;
-	font-weight: 200;
+	font-weight: 300;
 	font-size: max(2vw, 15px);
-	text-align: center;
+	text-align: left;
+	flex-direction: row;
+}
+#flexBio{
+	display: flex;
+	flex-direction: column;
+}
+img{
+	width: 20vw;
+	height: auto;
+	display: inline-flex;
+	flex-direction: column;
+}
+#bioContents > p > a{
+	color: hotpink;
+	text-decoration-thickness: 1px;
+}
+
+ul{
+	margin-left: 4vw;
+	font-size: max(1.5vw, 12px);
+}
+b{
+	font-weight: 400;
 }
 #h2Container {
-
 	display: flex;
 	width: 80vw;
 	justify-content: center;
@@ -167,12 +189,10 @@ h1 {
   -webkit-text-stroke-color: white;
 	paint-order: stroke fill;
 }
-
-a {
+.links1 {
 	justify-content: center;
 	text-align: center;
 	text-decoration: none;
-
 	z-index: 1;
 	margin: 0px;
 	color: rgba(230,230,230,.9);
@@ -180,14 +200,14 @@ a {
 	position: relative;
 	display: flex;
 	margin: 1px;
+	flex-grow: 1;
 }
+
 u:hover{
 	filter: url(#filter) drop-shadow(0px 0px 9px rgba(255,255,255,.1));;
 	mix-blend-mode: hard-light;
 }
 u {
-	padding-left: 6vw;
-	padding-right: 6vw;
 	z-index: 1;
 	text-decoration: none;
 	border-bottom: 0px solid white;
