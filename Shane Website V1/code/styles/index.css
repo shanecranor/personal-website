@@ -1,6 +1,9 @@
 html{
     background: black;
 }
+canvas{
+    display: none;
+}
 * {
     color: white;
     padding: 0;

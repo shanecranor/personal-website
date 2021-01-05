@@ -9,46 +9,77 @@
           rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://unpkg.com/flexmasonry/dist/flexmasonry.css">
 </head>
 <body>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-<script src="https://unpkg.com/imagesloaded@4/imagesloaded.pkgd.js"></script>
-
+<script src="https://unpkg.com/flexmasonry/dist/flexmasonry.js"></script>
 <script src="scripts/index.js"></script>
-<h1>Masonry - imagesLoaded progress, vanilla JS</h1>
+<div id = aboveContent>
+	<img id="backgroundImage" src="styles/tlbg.jpg">
+<div id="topHeader">
+	<div class="box">
+		<a href="../">Home</a>
+	</div>
+	<div class="box">
+		<a href="/code">Code</a>
+	</div>
+	<div class="box">
+		<a href="https://shane.cranor.org">Art</a>
+	</div>
+	<div class="box">
+		<a href="shane.cranor.org">Music</a>
+	</div>
+</div>
+<div id="title">
+	<div id="titleContainer">
+	<p>photography</p>
+	</div>
+	<div id="gallerySelector">
+		<div class="box">
+			<a onclick="showGal('.all')">all</a>
+		</div>
+		<div class="box">
+			<a onclick="showGal('.urban')">urban</a>
+		</div>
+		<div class="box">
+			<a onclick="showGal('.macro')">macro</a>
+		</div>
+		<div class="box">
+			<a onclick="showGal('.blackwhite')">b/w</a>
+		</div>
+		<div class="box">
+			<a onclick="showGal('.peeps')">portrait</a>
+		</div>
 
-<div class="grid">
-	<div class="grid-sizer"></div>
-	<div class="gutter-sizer"></div>
+	</div>
+</div>
 
-	<div class="grid-item"><img src="img/img0.jpeg" /></div>
-	<div class="grid-item"><img src="img/img1.jpeg" /></div>
-	<div class="grid-item"><img src="img/img2.jpeg" /></div>
-	<div class="grid-item"><img src="img/img3.jpeg" /></div>
-	<div class="grid-item"><img src="img/imge4.jpeg" /></div>
-	<div class="grid-item"><img src="img/img5.jpeg" /></div>
-	<div class="grid-item"><img src="img/img6.jpeg" /></div>
-	<div class="grid-item"><img src="img/img7.jpeg" /></div>
-	<div class="grid-item"><img src="img/img8.jpeg" /></div>
-	<div class="grid-item"><img src="img/img9.jpeg" /></div>
-	<div class="grid-item"><img src="img/img10.jpeg" /></div>
-	<div class="grid-item"><img src="img/img11.jpeg" /></div>
-	<div class="grid-item"><img src="img/img12.jpeg" /></div>
-	<div class="grid-item"><img src="img/img13.jpeg" /></div>
-	<div class="grid-item"><img src="img/img14.jpeg" /></div>
-	<div class="grid-item"><img src="img/img15.jpeg" /></div>
-	<div class="grid-item"><img src="img/img16.jpeg" /></div>
-	<div class="grid-item"><img src="img/img17.jpeg" /></div>
-	<div class="grid-item"><img src="img/img18.jpeg" /></div>
-	<div class="grid-item"><img src="img/img19.jpeg" /></div>
-	<div class="grid-item"><img src="img/img20.jpeg" /></div>
-	<div class="grid-item"><img src="img/img21.jpeg" /></div>
-	<div class="grid-item"><img src="img/img22.jpeg" /></div>
-	<div class="grid-item"><img src="img/img23.jpeg" /></div>
-	<div class="grid-item"><img src="img/img24.jpeg" /></div>
-
-
+</div>
+<div class="photoBox">
+	<div class="grid">
+		<div class="all portrait"><div class="inner"><img src="img/imgg30.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all landscape"><div class="inner"><img src="img/imgg31.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg32.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg33.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg34.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg35.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg36.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg27.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg29.jpeg" alt=""></div></div>
+		<div class="all macro"><div class="inner"><img src="img/imgg28.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all urban"><div class="inner"><img src="img/img3.jpeg" alt=""></div></div>
+		<div class="all blackwhite"><div class="inner"><img src="img/imgg20.jpeg" alt=""></div></div>
+	</div>
+</div>
+<div id="storageGrid">
 
 </div>
 

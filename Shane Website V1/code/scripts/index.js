@@ -7,9 +7,9 @@ window.onload = function(){
     title = document.getElementById("title");
     let canvas = document.getElementById("backgroundCanvas");
     app = new PIXI.Application({
-        view: canvas,
-        width: window.innerWidth,
-        height: window.innerHeight,
+        /*view: canvas,*/
+        width: 0,
+        height: 0,
         resolution: window.devicePixelRatio,
         autoDensity: true,
         antialias: true
@@ -31,15 +31,15 @@ function animationLoop() {
         spacing/=1.05;
     else
         spacing = 1;
-    animationGraphic.clear();
-    animationGraphic.beginFill(0xFFFFFF);
-    animationGraphic.lineStyle({
-        width: 1,
-        color: 0xFFFFFF,
-        alignment: 0.5,
-        alpha: 1,
-        cap: 'round',
-    })
-    for(let i = 0; i < 100; i++)
-    line(Math.random()*window.innerWidth,Math.random()*window.innerHeight,0,0,animationGraphic)
+    // animationGraphic.clear();
+    // animationGraphic.beginFill(0xFFFFFF);
+    // animationGraphic.lineStyle({
+    //     width: 1,
+    //     color: 0xFFFFFF,
+    //     alignment: 0.5,
+    //     alpha: 1,
+    //     cap: 'round',
+    // })
+    // for(let i = 0; i < 100; i++)
+    // line(Math.random()*window.innerWidth,Math.random()*window.innerHeight,0,0,animationGraphic)
 }
