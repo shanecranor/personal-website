@@ -77,19 +77,18 @@ html{
     text-align: center;
     text-decoration: none;
     border-bottom: 0px solid white;
+    cursor: grab;
 }
+
 #backgroundImage{
     z-index: -1;
     position: absolute;
     filter: brightness(0.6);
 }
 #aboveContent{
-
-    background-image: url("tlbg.jpg");
-    background-repeat: no-repeat;
-    background-size: 100% auto;
     background: none;
     height: calc(0.654 * 100vw);
+    width: 100%;
 }
 body { font-family: sans-serif;     padding: 0;
     margin: 0;
@@ -108,7 +107,12 @@ img {
     padding: 0px;
 }
 #storageGrid{
+    width: 0px;
+    height: 0px;
+    background: blue;
     visibility: hidden;
+    overflow-x: hidden;
+    overflow: hidden;
 }
 
 /*.urban{*/

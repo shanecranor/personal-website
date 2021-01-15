@@ -6,13 +6,14 @@ let app = null;
 let app2 = null;
 let CRT = null;
 let fpsBelowThreshold = 0;
-let graphicsQuality = 4;
+let fpsAboveThreshold = 0;
+let graphicsQuality = 0;
 let canvas = null; let canvas2 = null;
 let app2Graphic = null; let groundGraphic = null; let groundLineGraphic = null; let groundCoverGraphic = null; let groundLineHorizonGraphic = null; let starsGraphic = null; let starShieldGraphic = null; let fogGraphic = null;
 let blur = null;
 let time = 0;
 let width = 0; let height = 0;
-let scrollY = -100; let oldDeltaScrollY = 0; let deltaScrollY = 0;
+let scrollY = -20; let oldDeltaScrollY = 0; let deltaScrollY = 0;
 let notScrollingFrames = 40;
 let TOP = 0;
 let nameDOM = null;
@@ -46,8 +47,6 @@ window.onload = function(){
 	}, false);
 }
 
-
-
 function initFilters() {
 	lighten = new PIXI.filters.AdjustmentFilter();
 	lighten.brightness = 1.2;
@@ -71,6 +70,7 @@ function initFilters() {
 	groundGraphic.blendMode = PIXI.BLEND_MODES.ADD;
 	app2Graphic.filters = [CRT];
 }
+
 function initGraphics() {
 	app2Graphic = new PIXI.Graphics();
 	starsGraphic = new PIXI.Graphics();
@@ -82,6 +82,7 @@ function initGraphics() {
 	fogGraphic = new PIXI.Graphics();
 	fogGraphic.padding = 300;
 }
+
 function init(){
 	PIXI.utils.skipHello();
 	app = new PIXI.Application({
@@ -107,7 +108,7 @@ function init(){
 	initGraphics();
 	initFilters();
 
-	app2.ticker.maxFPS = 90;
+	//app2.ticker.maxFPS = 90;
 	app.stage.addChild(starsGraphic);
 	app.stage.addChild(starShieldGraphic);
 	app.stage.addChild(groundCoverGraphic);
@@ -143,17 +144,26 @@ function doGlitchAnimation() {
 		rect.setAttribute("height",randHeight+ "%");
 	}
 }
+
 function animateCRT() {
 	CRT.seed = Math.random();
-	CRT.time += 0.2;
+	CRT.time += 0.2*(60/app.ticker.FPS);
 }
+
 function animationLoop() {
 	if(app.ticker.FPS < 24){
 		fpsBelowThreshold++;
 	}
+	if(app.ticker.FPS > 50){
+		fpsAboveThreshold++;
+	}
 	if(fpsBelowThreshold > 10){
 		fpsBelowThreshold = 0;
 		graphicsQuality--;
+	}
+	if(fpsAboveThreshold > 70){
+		fpsAboveThreshold = 0;
+		graphicsQuality++;
 	}
 	animateCRT();
 	if(areHovering) {
@@ -169,6 +179,13 @@ function animationLoop() {
 function doScrollingStuff() {
 	width = app.screen.width;
 	height = app.screen.height;
+	if(width > 800){
+		document.getElementById("bioContents").style.width = "40vw"
+		document.getElementById("flexBio").style.flexDirection = "row-reverse";
+	}else{
+		document.getElementById("bioContents").style.width = "80vw"
+		document.getElementById("flexBio").style.flexDirection = "column-reverse";
+	}
 	TOP = ((height / 2) - (height / 5)) - (scrollY)*(height/width);
 	let isScrolling = !(oldDeltaScrollY == deltaScrollY);
 	let startScroll = scrollY;
@@ -187,8 +204,8 @@ function doScrollingStuff() {
 			scrollY -= dis*(.1-smoothOffset);
 		}
 	}
-	scrollY += deltaScrollY;
-	deltaScrollY *=.9;
+	scrollY += deltaScrollY*60/app.ticker.FPS;
+	deltaScrollY *= .9; //* Math.max(1, app.ticker.FPS/60);
 	if(scrollY > 0){
 		scrollY = 0;
 	}
