@@ -6,7 +6,8 @@ let app = null;
 let app2 = null;
 let CRT = null;
 let fpsBelowThreshold = 0;
-let graphicsQuality = 4;
+let fpsAboveThreshold = 0;
+let graphicsQuality = 0;
 let canvas = null; let canvas2 = null;
 let app2Graphic = null; let groundGraphic = null; let groundLineGraphic = null; let groundCoverGraphic = null; let groundLineHorizonGraphic = null; let starsGraphic = null; let starShieldGraphic = null; let fogGraphic = null;
 let blur = null;
@@ -153,9 +154,16 @@ function animationLoop() {
 	if(app.ticker.FPS < 24){
 		fpsBelowThreshold++;
 	}
+	if(app.ticker.FPS > 50){
+		fpsAboveThreshold++;
+	}
 	if(fpsBelowThreshold > 10){
 		fpsBelowThreshold = 0;
 		graphicsQuality--;
+	}
+	if(fpsAboveThreshold > 70){
+		fpsAboveThreshold = 0;
+		graphicsQuality++;
 	}
 	animateCRT();
 	if(areHovering) {
@@ -302,7 +310,7 @@ function generateStars(num, size){
 			star.position.x = starX;
 			star.position.y = starY;
 			//if(Math.abs(star.position.y - height/2) > 300) {
-				//star.blendMode = PIXI.BLEND_MODES.ADD;
+			//star.blendMode = PIXI.BLEND_MODES.ADD;
 			//}
 			starsGraphic.addChild(star);
 		}
@@ -411,7 +419,7 @@ function drawHorizon() {
 }
 function matrixGround(xdiv, ydiv, top, aspect, speedX, speedY, graphic){
 	/***vertical line loop:***/
-	//Calculate the extra lines needed to compensate for the X aspect not making it all the way to the edge of the canvas
+		//Calculate the extra lines needed to compensate for the X aspect not making it all the way to the edge of the canvas
 	var extra = Math.abs(width - (width * aspect)) / 2;
 	var timeModifierX = (speedX) % xdiv
 	//loops from before 0 to cover the whole canvas, keep looping until after width for the same reason
