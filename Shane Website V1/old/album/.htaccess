@@ -1,0 +1,6 @@
+AuthName "User name is friend, password is Shane's Dad's favorite place to have a scone (all lower case)"
+AuthType Basic
+AuthUserFile /home/lorrie/etc/passwd-cranor.org
+AuthGroupFile /home/lorrie/etc/group-cranor.org
+
+require group maya

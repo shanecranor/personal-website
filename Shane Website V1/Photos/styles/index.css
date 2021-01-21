@@ -1,0 +1,121 @@
+
+html{
+    background: black;
+}
+* {
+    color: white;
+
+}
+#topHeader{
+    position: absolute;
+    padding-top: 20px;
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    font-family: "Poppins", sans-serif;
+}
+#topHeader > .box{
+    width:100%;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    display: inline-flex;
+    border-bottom: 0px solid white;
+}
+#topHeader > .box > a {
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-size: 30px;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 0px solid white;
+}
+
+#title{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+#titleContainer{
+    height: 50%;
+}
+#titleContainer > p {
+    /*background: blue;*/
+    margin-top: 19vw;
+    text-align: center;
+
+    font-weight: 100;
+    font-family: "Poppins";
+    font-size: 10.3vw;
+    box-shadow: magenta;
+}
+#gallerySelector{
+    padding-top: 3vw;
+    height: 3vw;
+    /*background: red;*/
+    display: flex;
+}
+#gallerySelector> .box{
+    flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+    border-bottom: 0px solid white;
+}
+#gallerySelector > .box > a {
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-size: 5vw;
+    text-align: center;
+    text-decoration: none;
+    border-bottom: 0px solid white;
+    cursor: grab;
+}
+
+#backgroundImage{
+    z-index: -1;
+    position: absolute;
+    filter: brightness(0.6);
+}
+#aboveContent{
+    background: none;
+    height: calc(0.654 * 100vw);
+    width: 100%;
+}
+body { font-family: sans-serif;     padding: 0;
+    margin: 0;
+    box-sizing: border-box;}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.photoBox{
+    min-height: 500px;
+    overflow-x: hidden;
+}
+.inner {
+    padding: 0px;
+}
+#storageGrid{
+    width: 0px;
+    height: 0px;
+    background: blue;
+    visibility: hidden;
+    overflow-x: hidden;
+    overflow: hidden;
+}
+
+/*.urban{*/
+/*    visibility: hidden;*/
+/*    height: 0px;*/
+/*}*/

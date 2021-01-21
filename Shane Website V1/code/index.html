@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--  Meta  -->
+    <meta charset="UTF-8"/>
+    <title>Shane's Code Portfolio</title>
+
+    <!--  Styles  -->
+    <link type="text/css" rel="stylesheet" href="styles/index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700;800&family=Roboto+Slab&family=Work+Sans:wght@100;200;400;700;800&display=swap"
+          rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,700;1,200;1,400;1,600;1,700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<canvas id="backgroundCanvas"></canvas>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.3.0/pixi.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pixi-filters@3.0.3/dist/pixi-filters.js"></script>
+<script src="scripts/index.js"></script>
+<div id="topHeader">
+    <div class="box">
+        <a href="https://shane.cranor.org">Home</a>
+    </div>
+    <div class="box">
+        <a href="https://soundcloud.com/shane_cranor">Music</a>
+    </div>
+    <div class="box">
+        <a href="https://shane.cranor.org">Art</a>
+    </div>
+    <div class="box">
+        <a href="/Photos/index.html">Photos</a>
+    </div>
+</div>
+<div id="title">
+    <p>Code Portfolio</p>
+</div>
+<div id="content">
+    <div id="languageContainer">
+        <h2>Languages:</h2>
+        <dt>Most fluent</dt>
+        <dd>Java, Python, Javascript, C++, Arduino C</dd>
+        <dt>Web Languages and Libraries:</dt>
+        <dd>HTML, Javascript, CSS, PIXIJS, P5JS</dd>
+        <dt>Languages I dabble in:</dt>
+        <dd>Processing, Assembly (MIPS), Perl, Bash, Quartz Composer, AutoHotKey, Batch Scripting (.BAT?, DOS?)</dd>
+        <dt>Graphical Languages:</dt>
+        <dd>Quartz Composer, Scratch</dd>
+    </div>
+    <div id="Portfolio">
+        <h2>Projects</h2>
+        <dt>HackUMBC, 2020: <a href="https://devpost.com/software/bubblz-space">bubblz.space</a></dt>
+        <dd>
+            <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/285/069/datas/gallery.jpg"
+                 alt="Picture of UI for Bubblz.space">
+        </dd>
+        <dd>
+            bubblz.space is peer to peer zoom competitor, made in 24 hours on a team of three for the HackUMBC
+            hackathon. It was built using web technologies including WebRTC, PeerJS Javascript, HTML, and CSS. The
+            advantage bubblz.space has over other video sharing software is the concept of “the bubble.” Bubbles are
+            like public breakout rooms. When you go into a bubble you can only hear people who are talking in your
+            bubble. Going in and out of bubbles is as easy as dragging your video feed to whichever bubble you want!
+            This is nice because a professor or TA can see everyone in the class, even when in breakout rooms to more
+            easily gauge how well the class is doing on the discussion or assignment.
+            <br><br>
+            The site was/is (as of November 2020) live at <a href="https://bubblz.space/">bubblz.space</a>
+            Note that it may only work in Chrome and Edge
+        </dd>
+        <dt>CSCI306 Software Engineering, 2020: Campus Themed Clue Game</dt>
+        <dd>
+            <img src="/code/imgs/ClueGame.png" alt="Picture ClueGame UI">
+        </dd>
+        <dd>
+            An accurate reconstruction of the board game Clue with a new campus themed map, bad sound effects, fun
+            music, and pictures.
+            The game was written in a team of two using OOP principles and test driven development in Java. The final
+            product is over 4000 lines of code.
+        </dd>
+        <dt>Random Quarantine Project, 2020: <a href="https://codepen.io/Thisisntme/pen/gOPvdMm">
+            Procedural Interactive Pixel Art Kaleidoscope</a></dt>
+        <dd>
+            <p class="codepen" data-height="753" data-theme-id="dark" data-default-tab="result" data-user="Thisisntme"
+               data-slug-hash="gOPvdMm" data-preview="true"
+               style="height: 500px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;"
+               data-pen-title="Procedural Interactive Pixel Art Kaleidoscope">
+  <span>See the Pen <a href="https://codepen.io/Thisisntme/pen/gOPvdMm">
+  Procedural Interactive Pixel Art Kaleidoscope</a> by Shane (<a href="https://codepen.io/Thisisntme">@Thisisntme</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+            </p>
+            <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+        </dd>
+        <dd>
+            I made this in my spare time over the summer of 2020 while hiding from the rona with my family. The image is
+            generated from a strange modified iterative XOR function. Each coordinate is passed through
+            3 instances of the XOR function, one for the hue, saturation, and lightness. Based on the current FPS, the
+            program
+            dynamically changes the number of pixels rendered. The Kaleidoscope effect looks cool, but also serves to
+            increase the framerate by reducing the number of calls to the XOR function
+            as my iterative XOR function is not particularly efficient.
+        </dd>
+		<dt>Science Fair: Using neural networks to monitor parking lots, 2019</dt>
+		<dd>
+			<img src="/code/imgs/scifi.jpg" alt="me presenting my sciencefair at PRSEF">
+		</dd>
+		<dd>
+			This project was born out of the struggle of finding a parking spot at the airport (pre pandemic).
+			I wondered if there was a simple solution to driving by endless rows full of parked cars.
+			 My first thought was to have a fleet of drones that fly above the lot every half hour or so and direct users
+			to empty spots with laser pointers, or through a cellphone app.
+			After thinking about it for a while I decided to ditch the moving parts and just mount the camera to light
+			posts that are often found in parking lots
+			as an easy way to get high elevation without needing to deal with drones.
+			 A Raspberry Pi was used as the camera to collect images and I used Tensorflow to identify parked cars. Market research on existing
+			solutions revealed that most solutions cost over $100 per parking space. My solution is over 100 times cheaper for
+			50 or more parking spaces and has minimal installation costs.
+			I took my project to the Regional Pennsylvania Junior Academy of Science, got first award, and then went on to win
+			first award at the state wide competition as well. I also presented at PRSEF, the Pittsburgh Regional Science &
+			Engineering Fair, and won a sponsor award.
+			I really enjoyed teaching myself how to set up tensorflow for use in a real world scenario as well as learning
+			how to set up and use a Raspberry Pi.
+			</br>Here are the links to my
+			<a href="https://docs.google.com/presentation/d/1s76drEdBIL2nWBRRvm437i2gE22_n4uiu6_yqZVG63I/edit?usp=sharing">poster board</a> and my
+			<a href="https://docs.google.com/presentation/d/1Oo2V2g9wou79Sg-pdO02ykM4uOtl7vUhKkzTsef9Lno/edit?usp=sharing">presentation.</a>
+		</dd>
+        <dt>CSCI101/CSCI261, 2019: 3D Space Flight Simulator / Procedural Planet Generator</dt>
+        <dd>
+            <img src="/code/imgs/planet.png" alt="Picture of Procedurally Generated Planets">
+        </dd>
+        <dd>
+            Using the 3D engine I built in 2017, I built a space flight simulator demo in Python. For this project I
+            also built a procedural planet generator that creates 3D planets with a specified level of detail.
+			 I use an algorithm that maps a 2D plane to points on a sphere and then I use random noise to plot points on the
+			planet's surface and to generate peaks and valleys. I also created a simple file type to store the 3D data
+			and you can import and export 3D planets very easily inside of my planet generator.
+        </dd>
+        <dt>15-112 Fundamentals of Programming & Computer Science at Carnegie Mellon, Summer 2017: 3D Arcade Game</dt>
+        <dd>
+			<iframe width="696px" height="391px" src="https://www.youtube-nocookie.com/embed/pXuEB0N8F48" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </dd>
+        <dd>
+            I built a 3D engine and implemented it in my own arcade game as the final project for 15-112, the intro to programing course at
+			Carnegie Mellon University. The game is an infinite runner game where you play as a cube inside of a cubic snow globe.
+			Your character can move left and right as well as jump to avoid obstacles. If you rotate the snow globe while dodging an obstacle
+			you get points based on the speed that you are rotating. However, as you dodge more obstacles, the rate at which they move increases, making
+			your odds of avoiding them significantly worse. My game won the award for the best term project in the class.
+        </dd>
+
+    </div>
+
+    <div id="online">
+        <h2>Online</h2>
+        <dt>My CodePen: <a href="https://codepen.io/Thisisntme/">codepen.io/Thisisntme/</a></dt>
+        <dd>Various web based projects</dd>
+        <dt>My GitHub: <a href="https://github.com/shanecranor">github.com/shanecranor</a></dt>
+        <dd>Many assorted projects</dd>
+        <dt>My Scratch account: <a
+                href="https://scratch.mit.edu/users/thisisntme/">scratch.mit.edu/users/thisisntme/</a></dt>
+        <dd>Old projects from a long time ago</dd>
+    </div>
+</div>
+
+</body>
+</html>
